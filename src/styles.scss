@@ -1,1 +1,509 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primary-color: #007AFF;
+
+body {
+    font-family: "Plus Jakarta Sans, system-ui", 'Helvetica Neue', "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #3F3F3F;
+    background: #CDCDCD;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.pl-100 {
+    padding-left: 100px !important;
+}
+
+.py-32 {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+}
+
+.box {
+    width: 373px;
+    height: 56px;
+}
+
+.border-radius {
+    border-radius: 80px;
+}
+
+.bg-gray {
+    background-color: #F8F8F8;
+}
+
+.w-128 {
+    width: 128px;
+    ;
+}
+
+header {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E2E2EA;
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+}
+
+.nav-item {
+    &.active {
+        .nav-link {
+            color: #3F3F3F;
+        }
+    }
+
+    .nav-link {
+        color: #B3B3B3;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+        padding-left: 42px !important;
+        padding-right: 0 !important;
+    }
+}
+
+.notification-sign {
+    right: -1px;
+    top: 3px;
+    position: absolute;
+}
+
+button,
+input,
+.form-control {
+    padding: 20px 24px;
+    @extend .box;
+    @extend .border-radius;
+}
+
+button,
+.btn {
+    background-color: $primary-color;
+    color: #fff;
+    font-weight: 700;
+    border: 0;
+    @extend .box;
+    @extend .border-radius;
+
+    &:hover {
+        background-color: $primary-color;
+        color: #FFFFFF;
+    }
+}
+
+.form-control {
+    &:focus {
+        box-shadow: none;
+
+    }
+}
+
+.forgot-password {
+    @extend .box;
+
+    a {
+        font-family: "Plus Jakarta Sans";
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #3F3F3F;
+        text-decoration: none;
+    }
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.brand {
+    svg {
+        background: linear-gradient(180deg, #F5F5FF 0%, #E1E1FE 100%);
+        box-shadow: 0px 1.04082px 2.08163px rgba(16, 24, 40, 0.05);
+        border-radius: 7.28572px;
+        margin-right: 9px;
+    }
+}
+
+.form-style {
+    .form-inline {
+        display: flex;
+        flex-direction: row;
+    }
+
+    label {
+        font-weight: 700;
+        font-size: 14px;
+        color: #3F3F3F;
+    }
+
+    input {
+        border: 0;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        background-color: #F2F2F2;
+        color: #A0A5B0;
+        font-size: 14px;
+    }
+
+    &:focus {
+        border-bottom: 0;
+        box-shadow: none;
+        outline: 0;
+    }
+
+    .all-courses {
+        width: 81px;
+        font-size: 16px;
+        font-family: 'Plus Jakarta Sans';
+        padding: 12px 20px;
+        border: 0;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+    }
+}
+
+.has-search {
+    position: relative;
+    margin-left: 13px;
+
+    .form-control {
+        padding-left: 2.375rem;
+    }
+
+    .form-control-feedback {
+        position: absolute;
+        z-index: 2;
+        line-height: 2.375rem;
+        text-align: center;
+        pointer-events: none;
+        top: 16px;
+        left: 16px;
+    }
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+hr {
+    border-color: #E8E8E8;
+
+}
+
+main {
+    background: #F8F8F8;
+    min-height: 800px;
+
+    h2 {
+        font-size: 32px;
+        font-weight: 800;
+        margin: 0 0 8px 0;
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+    }
+
+    h3 {
+        font-family: "Plus Jakarta Sans";
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 32px;
+        letter-spacing: 0em;
+        text-align: left;
+
+    }
+
+    span {
+        font-size: 14px;
+        font-weight: 500;
+        font-style: italic;
+        font-family: 'Inter', sans-serif;
+    }
+
+    section {
+        background-color: #fff;
+        padding: 32px 40px;
+        border-radius: 8px;
+
+        h5 {
+            font-family: 'Plus Jakarta Sans';
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 32px;
+            letter-spacing: 0em;
+            text-align: left;
+            margin-bottom: 8px !important;
+        }
+
+        .lesson {
+            font-style: normal;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        p {
+
+            font-family: 'Plus Jakarta Sans';
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 32px;
+            letter-spacing: 0em;
+            text-align: left;
+            margin: 16px 0;
+        }
+
+        .enroll-btn {
+            width: auto !important;
+            padding: 20px 40px !important;
+            line-height: 19px !important;
+        }
+    }
+
+}
+
+.my-courses {
+    .lesson {
+        font-weight: 500 !important;
+    }
+}
+
+.progress {
+    margin: 10px 0 5px;
+    height: 6px;
+    border-radius: 10px;
+    background: #DDEDFF;
+
+    .progress-bar {
+        background: #007AFF
+    }
+}
+
+.card {
+    border: 0;
+
+    .card-title {
+        font-family: 'Plus Jakarta Sans';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0em;
+        text-align: left;
+
+    }
+
+    .card-text {
+        font-family: 'Plus Jakarta Sans';
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #6D6D6D;
+    }
+
+
+
+    .view-course {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 24px;
+        text-decoration-line: underline;
+        color: #007AFF;
+        margin-left: auto;
+    }
+}
+
+.badge {
+    height: 28px;
+    padding: 8px 13px 8px 13px;
+    font-family: 'Plus Jakarta Sans';
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #A0A5B0;
+    background: #F7F7F7;
+    border-radius: 41px;
+    margin-right: 8px;
+    font-style: normal;
+
+    &.badge-danger {
+        color: #FF5C00;
+        background-color: #FFEFE6;
+    }
+
+    &.badge-success {
+        color: #00CD83;
+        background-color: #E3FFF5;
+    }
+}
+
+.lesson {
+    font-family: 'Plus Jakarta Sans';
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8F8F8F;
+
+}
+
+footer {
+    height: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #A0A5B0;
+    background: #F3F3F3;
+}
+
+// Breadcrumb
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin: 24px 0;
+
+    .back-button,
+    .download {
+        font-size: 12px;
+        color: #3F3F3F;
+        background: #FFFFFF;
+        border: 1px solid #EEEEEE;
+        border-radius: 68px;
+        min-width: 68px;
+        text-align: center;
+        line-height: 28px;
+        text-decoration: none;
+        height: 32px;
+        margin-right: 20px;
+    }
+
+    .download {
+        min-width: 40px;
+        max-width: 40px;
+    }
+
+    .breadcrumb {
+        margin: 0;
+
+        li {
+            font-size: 12px;
+            line-height: 15px;
+
+            &.active {
+                color: #3F3F3F;
+            }
+
+            a {
+                text-decoration: none;
+                color: #8F8F8F;
+
+
+            }
+
+
+        }
+    }
+}
+
+article {
+    label {
+        font-family: "Plus Jakarta Sans";
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 15px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #7B8392;
+        display: block;
+    }
+
+    a,
+    .mentor-detail {
+        font-family: Plus Jakarta Sans;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0em;
+        line-height: 22px;
+        text-align: left;
+        text-decoration: none;
+        color: #3F3F3F;
+    }
+}
+
+.user-settings {
+    font-size: 14px;
+    font-weight: 600;
+
+    h5 {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 !important;
+    }
+
+    p {
+        font-size: 14px;
+        font-weight: 400;
+        margin: 0 0 16px 0;
+    }
+
+    label {
+        color: #8F8F8F;
+    }
+
+    input {
+        border: 2px solid #F1F1F1;
+        background-color: #fff;
+        margin-right: 16px;
+        color: #3F3F3F;
+    }
+
+    .form-inline {
+        flex-wrap: wrap;
+
+        >div:last-child {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .form-check {
+                margin-bottom: 16px;
+
+                label {
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+            }
+
+            .form-check-input[type=checkbox] {
+                padding: 0 !important;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+
+                &:checked {
+                    background-color: #00CD83;
+                    border-color: #00CD83;
+                }
+            }
+        }
+    }
+}
