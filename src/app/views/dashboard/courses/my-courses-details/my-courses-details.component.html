@@ -2,26 +2,28 @@
     <div class="row">
         <div class="col">
             <nav aria-label="breadcrumb">
-                <a href="#" class="back-button"> <svg width="7" height="12" viewBox="0 0 7 15" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                <a (click)="back()" class="back-button">
+                    <svg width="7" height="12" viewBox="0 0 7 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M5.38247 10.9393L0.723485 6.37992C0.668185 6.32564 0.629107 6.26684 0.60625 6.20352C0.583024 6.14019 0.571411 6.07234 0.571411 5.99997C0.571411 5.9276 0.583024 5.85976 0.60625 5.79643C0.629107 5.73311 0.668185 5.6743 0.723485 5.62003L5.38247 1.04709C5.5115 0.920441 5.67279 0.857117 5.86634 0.857117C6.05989 0.857117 6.22579 0.924964 6.36404 1.06066C6.50229 1.19636 6.57141 1.35467 6.57141 1.53559C6.57141 1.71652 6.50229 1.87483 6.36404 2.01053L2.29952 5.99997L6.36404 9.98942C6.49307 10.1161 6.55759 10.272 6.55759 10.4573C6.55759 10.6429 6.48846 10.8036 6.35021 10.9393C6.21196 11.075 6.05067 11.1428 5.86634 11.1428C5.68201 11.1428 5.52072 11.075 5.38247 10.9393Z"
                             fill="#3F3F3F" />
-                    </svg>&nbsp; Back</a>
+                    </svg>
+                    &nbsp; Back</a>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">The Brand Strategy</a></li>
                     <li class="breadcrumb-item"><a href="#">Categories</a></li>
 
                     <li class="breadcrumb-item active" aria-current="page">Get To Know Your Mentor!</li>
                 </ol>
-                <a href="#" class="back-button ml-auto">Next&nbsp; <svg width="7" height="12" viewBox="0 0 7 12"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                <a class="back-button ml-auto">Next &nbsp;
+                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1.6175 1.06068L6.27648 5.62005C6.33178 5.67433 6.37086 5.73313 6.39372 5.79645C6.41695 5.85978 6.42856 5.92763 6.42856 6C6.42856 6.07237 6.41695 6.14021 6.39372 6.20354C6.37086 6.26686 6.33178 6.32567 6.27648 6.37994L1.6175 10.9529C1.48847 11.0795 1.32718 11.1429 1.13363 11.1429C0.940079 11.1429 0.77418 11.075 0.635931 10.9393C0.497683 10.8036 0.428558 10.6453 0.428558 10.4644C0.428558 10.2834 0.497683 10.1251 0.635931 9.98944L4.70045 6L0.635931 2.01055C0.506899 1.8839 0.442383 1.72794 0.442383 1.54267C0.442383 1.35704 0.511507 1.19638 0.649756 1.06068C0.788005 0.924987 0.949295 0.857139 1.13363 0.857139C1.31796 0.857139 1.47925 0.924987 1.6175 1.06068Z"
                             fill="#3F3F3F" />
                     </svg>
                 </a>
-                <a href="" class="download"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                <a class="download">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M8 11.575C7.86667 11.575 7.74167 11.554 7.625 11.512C7.50833 11.4707 7.4 11.4 7.3 11.3L3.7 7.7C3.51667 7.51667 3.425 7.28333 3.425 7C3.425 6.71667 3.51667 6.48333 3.7 6.3C3.88333 6.11667 4.12067 6.02067 4.412 6.012C4.704 6.004 4.94167 6.09167 5.125 6.275L7 8.15V1C7 0.716667 7.096 0.479 7.288 0.287C7.47933 0.0956668 7.71667 0 8 0C8.28333 0 8.521 0.0956668 8.713 0.287C8.90433 0.479 9 0.716667 9 1V8.15L10.875 6.275C11.0583 6.09167 11.296 6.004 11.588 6.012C11.8793 6.02067 12.1167 6.11667 12.3 6.3C12.4833 6.48333 12.575 6.71667 12.575 7C12.575 7.28333 12.4833 7.51667 12.3 7.7L8.7 11.3C8.6 11.4 8.49167 11.4707 8.375 11.512C8.25833 11.554 8.13333 11.575 8 11.575ZM2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196 15.021 0 14.55 0 14V12C0 11.7167 0.0956668 11.479 0.287 11.287C0.479 11.0957 0.716667 11 1 11C1.28333 11 1.521 11.0957 1.713 11.287C1.90433 11.479 2 11.7167 2 12V14H14V12C14 11.7167 14.096 11.479 14.288 11.287C14.4793 11.0957 14.7167 11 15 11C15.2833 11 15.5207 11.0957 15.712 11.287C15.904 11.479 16 11.7167 16 12V14C16 14.55 15.8043 15.021 15.413 15.413C15.021 15.8043 14.55 16 14 16H2Z"
@@ -48,7 +50,7 @@
                         </div>
                     </div>
                     <div class="my-4">
-                        <a href="http://">HELLO from Jilly!</a>
+                        <a >HELLO from Jilly!</a>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="0"
                                 aria-valuemin="0" aria-valuemax="100"></div>
@@ -57,7 +59,7 @@
 
                     <div class="my-4">
                         <label for="">Let's Start Here</label>
-                        <a href="http://">Course One Workbook</a>
+                        <a >Course One Workbook</a>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 40%;" aria-valuenow="0"
                                 aria-valuemin="0" aria-valuemax="100"></div>
@@ -65,23 +67,23 @@
                     </div>
                     <div class="my-4">
                         <label for="">Module One</label>
-                        <a href="http://">Understanding the YOU behind your business</a>
+                        <a >Understanding the YOU behind your business</a>
                     </div>
                     <div class="my-4">
                         <label for="">Module Two</label>
-                        <a href="http://">Understanding the Value of Your Brand</a>
+                        <a >Understanding the Value of Your Brand</a>
                     </div>
                     <div class="my-4">
                         <label for="">Module Three</label>
-                        <a href="http://">Keeping your business on the right track</a>
+                        <a >Keeping your business on the right track</a>
                     </div>
                     <div class="my-4">
                         <label for="">Module Four</label>
-                        <a href="http://">Keeping your business on the right track</a>
+                        <a >Keeping your business on the right track</a>
                     </div>
                     <div class="my-4">
                         <label for="">Module Five</label>
-                        <a href="http://">Keeping your business on the right track</a>
+                        <a >Keeping your business on the right track</a>
                     </div>
                 </article>
             </div>
@@ -89,17 +91,17 @@
                 <section>
                     <h3>Course One Workbook</h3>
                     <span class="lesson">8 of 16 Modules Completed</span>
-                    <video width="100%" height="340" controls>
+                    <!-- <video width="100%" height="340" controls>
                         <source src="movie.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
-                    </video>
-                    <!-- <p>In this module, we are going to explore what it is that you value on a personal level, how that
+                    </video> -->
+                    <p>In this module, we are going to explore what it is that you value on a personal level, how that
                         translates to your business and understanding your WHY—that emotional reason for having your business!
                         When you have clarity on who you are, you will have clarity on your business and your brand. This
                         knowledge will boost your confidence and ultimately point you in the direction you want to go.
                         We’re also going to explore the types of goals that help push your business forward and light a fire under
-                        your ass! Let’s get started!</p> -->
+                        your ass! Let’s get started!</p>
                 </section>
             </div>
         </div>

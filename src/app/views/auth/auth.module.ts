@@ -4,8 +4,17 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { HeaderComponent } from './header/header.component';
-import { AllCoursesComponent } from '../all-courses/all-courses.component';
+import { RouterModule } from '@angular/router';
+
+
+const routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: '**', redirectTo: 'login' },
+];
+
 
 @NgModule({
   declarations: [
@@ -13,9 +22,8 @@ import { AllCoursesComponent } from '../all-courses/all-courses.component';
     SignupComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    HeaderComponent,
-    AllCoursesComponent,
   ],
-  imports: [CommonModule],
+  imports: [
+    RouterModule.forChild(routes),CommonModule],
 })
 export class AuthModule {}

@@ -15,7 +15,9 @@ body {
 body * {
     box-sizing: border-box;
 }
-
+a{
+    cursor: pointer;
+}
 .pl-100 {
     padding-left: 100px !important;
 }
