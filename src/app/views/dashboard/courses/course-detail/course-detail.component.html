@@ -1,43 +1,46 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <nav aria-label="breadcrumb">
-                <a  (click)="back()"  class="back-button">
-                    <svg width="7" height="12" viewBox="0 0 7 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M5.38247 10.9393L0.723485 6.37992C0.668185 6.32564 0.629107 6.26684 0.60625 6.20352C0.583024 6.14019 0.571411 6.07234 0.571411 5.99997C0.571411 5.9276 0.583024 5.85976 0.60625 5.79643C0.629107 5.73311 0.668185 5.6743 0.723485 5.62003L5.38247 1.04709C5.5115 0.920441 5.67279 0.857117 5.86634 0.857117C6.05989 0.857117 6.22579 0.924964 6.36404 1.06066C6.50229 1.19636 6.57141 1.35467 6.57141 1.53559C6.57141 1.71652 6.50229 1.87483 6.36404 2.01053L2.29952 5.99997L6.36404 9.98942C6.49307 10.1161 6.55759 10.272 6.55759 10.4573C6.55759 10.6429 6.48846 10.8036 6.35021 10.9393C6.21196 11.075 6.05067 11.1428 5.86634 11.1428C5.68201 11.1428 5.52072 11.075 5.38247 10.9393Z"
-                            fill="#3F3F3F" />
-                    </svg>&nbsp; Back
-                </a>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a  (click)="back()">All Courses</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">The Brand Strategy</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <section>
+<main>
+    <div class="container">
         <div class="row">
             <div class="col">
-                <div class="card-body">
-                    <h3 class="card-title">The Brand Strategy</h3>
-                    <span class="lesson">16 Modules Completed</span>
-                    <div class="d-flex">
-                        <span class="badge badge-pill badge-danger">Paid</span>
-                        <span class="badge badge-pill badge-light">Private</span>
-                    </div>
-                    <p>Our very first course is all about building your framework and helping to guide your
-                        business in the right direction. Branding not only defines the look and feel of your business
-                        but also
-                        ensures you stay consistent across all platforms and with all of your messaging!</p>
-                    <button class="btn enroll-btn">Enroll Me</button>
-                </div>
-            </div>
-            <div class="col">
-                <img src="../assets/jillyAcadey.png" class="card-img-top" alt="...">
+                <nav aria-label="breadcrumb">
+                    <a (click)="back()" class="back-button">
+                        <svg width="7" height="12" viewBox="0 0 7 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.38247 10.9393L0.723485 6.37992C0.668185 6.32564 0.629107 6.26684 0.60625 6.20352C0.583024 6.14019 0.571411 6.07234 0.571411 5.99997C0.571411 5.9276 0.583024 5.85976 0.60625 5.79643C0.629107 5.73311 0.668185 5.6743 0.723485 5.62003L5.38247 1.04709C5.5115 0.920441 5.67279 0.857117 5.86634 0.857117C6.05989 0.857117 6.22579 0.924964 6.36404 1.06066C6.50229 1.19636 6.57141 1.35467 6.57141 1.53559C6.57141 1.71652 6.50229 1.87483 6.36404 2.01053L2.29952 5.99997L6.36404 9.98942C6.49307 10.1161 6.55759 10.272 6.55759 10.4573C6.55759 10.6429 6.48846 10.8036 6.35021 10.9393C6.21196 11.075 6.05067 11.1428 5.86634 11.1428C5.68201 11.1428 5.52072 11.075 5.38247 10.9393Z"
+                                fill="#3F3F3F" />
+                        </svg>&nbsp; Back
+                    </a>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a (click)="back()">All Courses</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">The Brand Strategy</li>
+                    </ol>
+                </nav>
             </div>
         </div>
-    </section>
-</div>
+        <section>
+            <div class="row">
+                <div class="col">
+                    <div class="card-body">
+                        <h3 class="card-title">The Brand Strategy</h3>
+                        <span class="lesson">16 Modules Completed</span>
+                        <div class="d-flex">
+                            <span class="badge badge-pill badge-danger">Paid</span>
+                            <span class="badge badge-pill badge-light">Private</span>
+                        </div>
+                        <p>Our very first course is all about building your framework and helping to guide your
+                            business in the right direction. Branding not only defines the look and feel of your
+                            business
+                            but also
+                            ensures you stay consistent across all platforms and with all of your messaging!</p>
+                        <button class="btn enroll-btn">Enroll Me</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="../assets/jillyAcadey.png" class="card-img-top" alt="...">
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

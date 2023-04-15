@@ -1,91 +1,94 @@
-<div class="container">
-    <div class="row">
-        <div class="col py-32">
-            <h2>My Courses</h2>
-            <span>7 courses</span>
-        </div>
-        <div class="col py-32 form-style ml-auto">
-            <form class="form-inline justify-content-end align-items-baseline">
-                <div class="form-group">
-                    <select class="form-control all-courses">
-                        <option>All</option>
-                    </select>
-                </div>
-                <div class="form-group has-search">
-                    <span class="form-control-feedback"> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12.0835 13.2603L9.08346 10.2603C8.66679 10.5936 8.18762 10.8575 7.64596 11.052C7.10429 11.2464 6.5279 11.3436 5.91679 11.3436C4.4029 11.3436 3.12179 10.8195 2.07346 9.77115C1.02457 8.72226 0.500122 7.44087 0.500122 5.92698C0.500122 4.41309 1.02457 3.1317 2.07346 2.08281C3.12179 1.03448 4.4029 0.510315 5.91679 0.510315C7.43068 0.510315 8.71207 1.03448 9.76096 2.08281C10.8093 3.1317 11.3335 4.41309 11.3335 5.92698C11.3335 6.53809 11.2362 7.11448 11.0418 7.65615C10.8473 8.19781 10.5835 8.67698 10.2501 9.09365L13.271 12.1145C13.4237 12.2673 13.5001 12.4548 13.5001 12.677C13.5001 12.8992 13.4168 13.0936 13.2501 13.2603C13.0973 13.4131 12.9029 13.4895 12.6668 13.4895C12.4307 13.4895 12.2362 13.4131 12.0835 13.2603ZM5.91679 9.67698C6.95846 9.67698 7.84401 9.31254 8.57346 8.58365C9.30234 7.8542 9.66679 6.96865 9.66679 5.92698C9.66679 4.88531 9.30234 3.99976 8.57346 3.27031C7.84401 2.54143 6.95846 2.17698 5.91679 2.17698C4.87512 2.17698 3.98957 2.54143 3.26012 3.27031C2.53123 3.99976 2.16679 4.88531 2.16679 5.92698C2.16679 6.96865 2.53123 7.8542 3.26012 8.58365C3.98957 9.31254 4.87512 9.67698 5.91679 9.67698Z"
-                                fill="#92929D" />
-                        </svg>
-                    </span>
-                    <input type="search" placeholder="Search course & class" class="form-control mt-2"
-                        id="InputPassword">
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4" (click)=" viewDetails()" >
-            <div class="card p-3  my-courses">
-                <div class="row">
-                    <div class="col-4">
-                        <img src="../assets/jillyAcadey.png" class="card-img-top" alt="..."></div>
-                    <div class="col">
-                        <div class="course-in-progress ">
-                            <h5 class="card-title">The Brand Strategy</h5>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <span class="lesson">8 of 16 Modules Completed</span>
-                        </div>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col py-32">
+                <h2>My Courses</h2>
+                <span>7 courses</span>
+            </div>
+            <div class="col py-32 form-style ml-auto">
+                <form class="form-inline justify-content-end align-items-baseline">
+                    <div class="form-group">
+                        <select class="form-control all-courses">
+                            <option>All</option>
+                        </select>
                     </div>
-                </div>
-
+                    <div class="form-group has-search">
+                        <span class="form-control-feedback"> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.0835 13.2603L9.08346 10.2603C8.66679 10.5936 8.18762 10.8575 7.64596 11.052C7.10429 11.2464 6.5279 11.3436 5.91679 11.3436C4.4029 11.3436 3.12179 10.8195 2.07346 9.77115C1.02457 8.72226 0.500122 7.44087 0.500122 5.92698C0.500122 4.41309 1.02457 3.1317 2.07346 2.08281C3.12179 1.03448 4.4029 0.510315 5.91679 0.510315C7.43068 0.510315 8.71207 1.03448 9.76096 2.08281C10.8093 3.1317 11.3335 4.41309 11.3335 5.92698C11.3335 6.53809 11.2362 7.11448 11.0418 7.65615C10.8473 8.19781 10.5835 8.67698 10.2501 9.09365L13.271 12.1145C13.4237 12.2673 13.5001 12.4548 13.5001 12.677C13.5001 12.8992 13.4168 13.0936 13.2501 13.2603C13.0973 13.4131 12.9029 13.4895 12.6668 13.4895C12.4307 13.4895 12.2362 13.4131 12.0835 13.2603ZM5.91679 9.67698C6.95846 9.67698 7.84401 9.31254 8.57346 8.58365C9.30234 7.8542 9.66679 6.96865 9.66679 5.92698C9.66679 4.88531 9.30234 3.99976 8.57346 3.27031C7.84401 2.54143 6.95846 2.17698 5.91679 2.17698C4.87512 2.17698 3.98957 2.54143 3.26012 3.27031C2.53123 3.99976 2.16679 4.88531 2.16679 5.92698C2.16679 6.96865 2.53123 7.8542 3.26012 8.58365C3.98957 9.31254 4.87512 9.67698 5.91679 9.67698Z"
+                                    fill="#92929D" />
+                            </svg>
+                        </span>
+                        <input type="search" placeholder="Search course & class" class="form-control mt-2"
+                            id="InputPassword">
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="col-4" (click)=" viewDetails()">
-            <div class="card p-3  my-courses">
-                <div class="row">
-                    <div class="col-4"><img src="../assets/jillyAcadey.png" class="card-img-top" alt="..."></div>
-                    <div class="col">
-                        <div class="course-in-progress ">
-                            <h5 class="card-title">The Content Creator</h5>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <span class="lesson">8 of 16 Modules Completed</span>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="row">
+            <div class="col">
+                <hr>
             </div>
         </div>
-        <div class="col-4" (click)=" viewDetails()">
-            <div class="card p-3  my-courses">
-                <div class="row">
-                    <div class="col-4"><img src="../assets/jillyAcadey.png" class="card-img-top" alt="..."></div>
-                    <div class="col">
-                        <div class="course-in-progress ">
-                            <h5 class="card-title">The Growth Accelerator</h5>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="row">
+            <div class="col-4" (click)=" viewDetails()">
+                <div class="card p-3  my-courses">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="../assets/jillyAcadey.png" class="card-img-top" alt="...">
+                        </div>
+                        <div class="col">
+                            <div class="course-in-progress ">
+                                <h5 class="card-title">The Brand Strategy</h5>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="lesson">8 of 16 Modules Completed</span>
                             </div>
-                            <span class="lesson">8 of 16 Modules Completed</span>
                         </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
+            <div class="col-4" (click)=" viewDetails()">
+                <div class="card p-3  my-courses">
+                    <div class="row">
+                        <div class="col-4"><img src="../assets/jillyAcadey.png" class="card-img-top" alt="..."></div>
+                        <div class="col">
+                            <div class="course-in-progress ">
+                                <h5 class="card-title">The Content Creator</h5>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="lesson">8 of 16 Modules Completed</span>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+            <div class="col-4" (click)=" viewDetails()">
+                <div class="card p-3  my-courses">
+                    <div class="row">
+                        <div class="col-4"><img src="../assets/jillyAcadey.png" class="card-img-top" alt="..."></div>
+                        <div class="col">
+                            <div class="course-in-progress ">
+                                <h5 class="card-title">The Growth Accelerator</h5>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="lesson">8 of 16 Modules Completed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
+</main>

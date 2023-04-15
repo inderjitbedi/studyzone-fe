@@ -15,9 +15,11 @@ body {
 body * {
     box-sizing: border-box;
 }
-a{
+
+a {
     cursor: pointer;
 }
+
 .pl-100 {
     padding-left: 100px !important;
 }
@@ -103,6 +105,7 @@ button,
 .form-control {
     &:focus {
         box-shadow: none;
+        background-color: #F2F2F2;
 
     }
 }
@@ -203,7 +206,7 @@ hr {
 
 main {
     background: #F8F8F8;
-    min-height: 800px;
+    min-height: calc(100vh - 100px);
 
     h2 {
         font-size: 32px;
@@ -373,6 +376,10 @@ footer {
     text-align: center;
     color: #A0A5B0;
     background: #F3F3F3;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
 }
 
 // Breadcrumb
@@ -507,5 +514,44 @@ article {
                 }
             }
         }
+    }
+}
+
+.pr-4 {
+    padding-right: 4px;
+}
+
+.mt-2px {
+    // margin-top: 2px;
+}
+
+.stepper {
+    .line {
+        width: 2px;
+        min-height: 35px;
+        background-color: lightgrey !important;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width:768px) {
+    .pl-100 {
+        padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+    }
+
+    .box,
+    .forgot-password,
+    .btn,
+    button,
+    input,
+    .form-control {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 38px;
     }
 }
