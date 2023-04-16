@@ -3,13 +3,16 @@
         <div class="row">
             <div class="col py-32">
                 <h2>All Courses</h2>
-                <span>7 courses</span>
+                <span>{{totalCourses}} courses</span>
             </div>
             <div class="col py-32 form-style ml-auto">
                 <form class="form-inline justify-content-end align-items-baseline">
                     <div class="form-group">
                         <select class="form-control all-courses">
-                            <option>All</option>
+                            <option value="">All</option>
+                            <option value="public">Free</option>
+                            <option value="private">Private</option>
+                            <option value="paid">Paid</option>
                         </select>
                     </div>
                     <div class="form-group has-search">
@@ -32,61 +35,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-4">
+            <div class="col-4 pt-16 pr-16 pl-0" *ngFor="let course of courses">
                 <div class="card p-3">
                     <img src="../assets/jillyAcadey.png" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">The Brand Strategy</h5>
-                        <span class="lesson">40+ lessons</span>
-                        <p class="card-text">A deep dive into the foundation of your business, the value you provide,
-                            understanding
-                            your customer and developing your brand!</p>
+                        <h5 class="card-title">{{course.name | titlecase}}</h5>
+                        <span class="lesson">{{course.slideCount}} lessons</span>
+                        <p class="card-text">{{course.description || 'No description added'}}</p>
                         <div class="d-flex">
-                            <span class="badge badge-pill badge-danger">Paid</span>
-                            <span class="badge badge-pill badge-light">Private</span>
+                            <span class="badge badge-pill badge-success" *ngIf="course.type =='public'">Free</span>
+                            <span class="badge badge-pill badge-danger" *ngIf="course.type =='paid'">Paid</span>
+                            <span class="badge badge-pill badge-light" *ngIf="course.type =='private'">Private</span>
                             <a (click)="viewDetails()" class="view-course">View Course</a>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="card p-3">
-                    <img src="../assets/jillyAcadey.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">The Brand Strategy</h5>
-                        <span class="lesson">40+ lessons</span>
-                        <p class="card-text">A deep dive into the foundation of your business, the value you provide,
-                            understanding
-                            your customer and developing your brand!</p>
-                        <div class="d-flex">
-                            <span class="badge badge-pill badge-success">Free</span>
-                            <span class="badge badge-pill badge-light">Public</span>
-                              <a (click)="viewDetails()" class="view-course">View Course</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card p-3">
-                    <img src="../assets/jillyAcadey.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">The Brand Strategy</h5>
-                        <span class="lesson">40+ lessons</span>
-                        <p class="card-text">A deep dive into the foundation of your business, the value you provide,
-                            understanding
-                            your customer and developing your brand!</p>
-                        <div class="d-flex">
-                            <span class="badge badge-pill badge-success">Free</span>
-                            <span class="badge badge-pill badge-light">Private</span>
-                              <a (click)="viewDetails()" class="view-course">View Course</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </main>

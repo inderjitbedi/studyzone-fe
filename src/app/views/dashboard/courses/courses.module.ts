@@ -6,22 +6,21 @@ import { RouterModule } from '@angular/router';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { MyCoursesDetailsComponent } from './my-courses-details/my-courses-details.component';
 
-
 const routes = [
-  { path: 'all-courses', component: AllCoursesComponent },
-  { path: 'course/details', component: CourseDetailComponent },
+  { path: 'all', component: AllCoursesComponent },
+  { path: ':id/details', component: CourseDetailComponent },
   { path: 'my-courses', component: MyCoursesComponent },
-  { path: 'my-course/details', component: MyCoursesDetailsComponent },
-  { path: '**', redirectTo: 'all-courses' },
+  { path: 'my-course/:id/details', component: MyCoursesDetailsComponent },
+  { path: '**', redirectTo: 'all' },
 ];
 
-
 @NgModule({
-  declarations: [],
-  imports: [
-    RouterModule,
-    RouterModule.forChild(routes),
-    CommonModule
-  ]
+  declarations: [
+    AllCoursesComponent,
+    CourseDetailComponent,
+    MyCoursesComponent,
+    MyCoursesDetailsComponent,
+  ],
+  imports: [RouterModule, RouterModule.forChild(routes), CommonModule],
 })
-export class CoursesModule { }
+export class CoursesModule {}

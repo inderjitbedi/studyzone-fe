@@ -5,7 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
   { path: 'login', component: LoginComponent },
@@ -15,7 +15,6 @@ const routes = [
   { path: '**', redirectTo: 'login' },
 ];
 
-
 @NgModule({
   declarations: [
     LoginComponent,
@@ -24,6 +23,10 @@ const routes = [
     ResetPasswordComponent,
   ],
   imports: [
-    RouterModule.forChild(routes),CommonModule],
+    RouterModule.forChild(routes),
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class AuthModule {}

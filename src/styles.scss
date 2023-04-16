@@ -167,7 +167,7 @@ h1 {
     }
 
     .all-courses {
-        width: 81px;
+        width: 95px;
         font-size: 16px;
         font-family: 'Plus Jakarta Sans';
         padding: 12px 20px;
@@ -207,6 +207,7 @@ hr {
 main {
     background: #F8F8F8;
     min-height: calc(100vh - 100px);
+    padding-bottom: 32px;
 
     h2 {
         font-size: 32px;
@@ -366,6 +367,10 @@ main {
 
 }
 
+.outlet-margin {
+    margin-bottom: 40px;
+}
+
 footer {
     height: 40px;
     font-family: 'Inter', sans-serif;
@@ -376,7 +381,7 @@ footer {
     text-align: center;
     color: #A0A5B0;
     background: #F3F3F3;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 
@@ -554,4 +559,16 @@ article {
     h1 {
         font-size: 38px;
     }
+}
+
+.pr-16 {
+    padding-right: 16px;
+}
+
+.pt-16 {
+    padding-top: 16px;
+}
+
+.pl-0 {
+    padding-left: 0;
 }
