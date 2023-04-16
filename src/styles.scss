@@ -381,7 +381,7 @@ footer {
     text-align: center;
     color: #A0A5B0;
     background: #F3F3F3;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     width: 100%;
 
@@ -456,10 +456,12 @@ article {
         font-weight: 700;
         line-height: 22px;
         letter-spacing: 0em;
-        line-height: 22px;
         text-align: left;
         text-decoration: none;
         color: #3F3F3F;
+    }
+    .mentor-detail{
+        line-height: 0;
     }
 }
 
@@ -531,9 +533,10 @@ article {
 }
 
 .stepper {
+    font-size: 14px;
     .line {
         width: 2px;
-        min-height: 35px;
+        min-height: 40px;
         background-color: lightgrey !important;
     }
 
