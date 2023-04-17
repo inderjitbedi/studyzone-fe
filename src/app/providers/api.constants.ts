@@ -2,20 +2,25 @@ export const apiConstants = {
   signin: 'auth/login',
 
   allCourses: 'user/course/all',
+  myCourses: 'user/course/my-courses',
+  getCourseDetails: 'user/course/:id/details',
+  requestEnrollment: 'user/course/:id/requestEnrollment',
+  enrollCourse: 'user/course/:id/enrollCourse',
+  getMyCourseDetails: 'user/course/my-course/:id/details',
+  getSlideDetails: 'user/course/:id/slide/:slideid/details',
 
-  createCourse: 'user/course',
-  getCourseDetails: 'user/course/',
-  updateCourse: 'user/course/',
-  deleteCourse: 'user/course/:id/delete',
-  manageCourseAccess: 'user/course/manage-visibility/',
-  checkCourseUniqueness: 'user/check-uniqueness-course/',
+  markProgress:'user/course/:id/slide/:slideid/markProgress',
+  getProgress:'user/course/:id/getProgress',
+  dummy:'user/dummy',
+  
+
+
   addComment: 'user/course/:id/comment',
   deleteComment: 'user/course/:id/comment/:commentId',
 
   slide: 'user/course/:id/slide/list',
   createSlide: 'user/course/:id/slide',
   updateSlide: 'user/course/:id/slide/:slideid',
-  getSlideDetails: 'user/course/:id/slide/:slideid',
   reorderSildes: 'user/course/:id/slide/list/reorder',
   manageSlideAccess: 'user/course/manage-visibility/',
   checkSlideUniqueness: 'user/check-uniqueness-course/',

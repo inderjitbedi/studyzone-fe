@@ -4,7 +4,7 @@
             <div class="col">
 
                 <nav class="navbar navbar-expand-lg navbar-light ">
-                    <div class="brand navbar-brand">
+                    <div class="brand navbar-brand cursor-pointer" routerLink="/dashboard/courses/all">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_6_132)">
                                 <path d="M11.9098 7.22485H22.4423L14.6988 18.7023H4.16626L11.9098 7.22485Z"
@@ -29,14 +29,14 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item " routerLinkActive="active" routerLink="/dashboard/courses/my-courses">
+                            <li class="nav-item " [class.active]="currentUrl.indexOf('my')>-1" routerLink="/dashboard/courses/my-courses">
                                 <a class="nav-link">My Courses</a>
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link" href="#">ANNOUNCEMENTS</a>
                             </li> -->
 
-                            <li class="nav-item" routerLinkActive="active" routerLink="/dashboard/courses/all">
+                            <li class="nav-item" [class.active]="currentUrl.indexOf('all')>-1" routerLink="/dashboard/courses/all">
                                 <a class="nav-link">All Courses</a>
                             </li>
                         </ul>

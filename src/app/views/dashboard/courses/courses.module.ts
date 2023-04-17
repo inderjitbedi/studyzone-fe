@@ -5,12 +5,14 @@ import { MyCoursesComponent } from './my-courses/my-courses.component';
 import { RouterModule } from '@angular/router';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { MyCoursesDetailsComponent } from './my-courses-details/my-courses-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
   { path: 'all', component: AllCoursesComponent },
-  { path: ':id/details', component: CourseDetailComponent },
+  { path: 'course/:id/details', component: CourseDetailComponent },
   { path: 'my-courses', component: MyCoursesComponent },
   { path: 'my-course/:id/details', component: MyCoursesDetailsComponent },
+  { path: 'my-course/:id/slide/:slideid', component: MyCoursesDetailsComponent },
   { path: '**', redirectTo: 'all' },
 ];
 
@@ -21,6 +23,8 @@ const routes = [
     MyCoursesComponent,
     MyCoursesDetailsComponent,
   ],
-  imports: [RouterModule, RouterModule.forChild(routes), CommonModule],
+  imports: [RouterModule, RouterModule.forChild(routes), CommonModule,
+    ReactiveFormsModule,
+    FormsModule,],
 })
-export class CoursesModule {}
+export class CoursesModule { }

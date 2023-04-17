@@ -11,18 +11,17 @@
                         </svg>
                         &nbsp; Back</a>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">The Brand Strategy</a></li>
-                        <li class="breadcrumb-item"><a href="#">Categories</a></li>
-
-                        <li class="breadcrumb-item active" aria-current="page">Get To Know Your Mentor!</li>
+                        <li class="breadcrumb-item"><a (click)="back()">My Courses</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{courseDetails?.name|titlecase}}</li>
                     </ol>
-                    <a class="back-button ml-auto">Next &nbsp;
+                    <a class="back-button ml-auto" *ngIf="slideDetails.position != slides.length"  (click)="nextSlide()">Next &nbsp;
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M1.6175 1.06068L6.27648 5.62005C6.33178 5.67433 6.37086 5.73313 6.39372 5.79645C6.41695 5.85978 6.42856 5.92763 6.42856 6C6.42856 6.07237 6.41695 6.14021 6.39372 6.20354C6.37086 6.26686 6.33178 6.32567 6.27648 6.37994L1.6175 10.9529C1.48847 11.0795 1.32718 11.1429 1.13363 11.1429C0.940079 11.1429 0.77418 11.075 0.635931 10.9393C0.497683 10.8036 0.428558 10.6453 0.428558 10.4644C0.428558 10.2834 0.497683 10.1251 0.635931 9.98944L4.70045 6L0.635931 2.01055C0.506899 1.8839 0.442383 1.72794 0.442383 1.54267C0.442383 1.35704 0.511507 1.19638 0.649756 1.06068C0.788005 0.924987 0.949295 0.857139 1.13363 0.857139C1.31796 0.857139 1.47925 0.924987 1.6175 1.06068Z"
                                 fill="#3F3F3F" />
                         </svg>
                     </a>
+                    <!-- <a class="back-button ml-auto" >Finish</a> -->
                     <a class="download">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -40,137 +39,25 @@
                 <div class="col-3">
                     <article>
                         <div class="stepper d-flex flex-column ml-2">
-                            <div class="align-items-baseline d-flex">
+                            <div class="align-items-baseline d-flex" *ngFor="let slide of slides; let index= index;">
                                 <div class="d-flex flex-column pr-4 align-items-center">
                                     <div class="mentor-detail">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                        <svg *ngIf="slide.isCompleted" width="16" height="16" viewBox="0 0 16 16"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                 d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM11.2243 5.57574C11.4586 5.81005 11.4586 6.18995 11.2243 6.42426L7.22426 10.4243C6.98995 10.6586 6.61005 10.6586 6.37574 10.4243L4.77574 8.82426C4.54142 8.58995 4.54142 8.21005 4.77574 7.97574C5.01005 7.74142 5.38995 7.74142 5.62426 7.97574L6.8 9.15147L8.58787 7.3636L10.3757 5.57574C10.6101 5.34142 10.9899 5.34142 11.2243 5.57574Z"
                                                 fill="#00CD83" />
-                                        </svg> &nbsp;
-                                    </div>
-                                    <div class="line h-100"></div>
-                                </div>
-                                <div class="mt-2px">
-                                    Get To Know Your Mentor!
-                                </div>
-                            </div>
-                            <div class="align-items-baseline d-flex">
-                                <div class="d-flex flex-column pr-4 align-items-center">
-                                    <div class="mentor-detail">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="8" cy="8" r="7.25" fill="white" stroke="#7B8392"
-                                                stroke-width="1.5" />
-                                        </svg> &nbsp;
-
-                                    </div>
-                                    <div class="line h-100"></div>
-                                </div>
-                                <div class="mt-2px">
-                                    <a>HELLO from Jilly!</a>
-                                </div>
-                            </div>
-                            <div class="align-items-baseline d-flex">
-                                <div class="d-flex flex-column pr-4 align-items-center">
-                                    <div class="mentor-detail">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="8" cy="8" r="7.25" fill="white" stroke="#7B8392"
-                                                stroke-width="1.5" />
-                                        </svg> &nbsp;
-
-                                    </div>
-                                    <div class="line h-100"></div>
-                                </div>
-                                <div class="mt-2px">
-                                    <label for="">Let's Start Here</label>
-                                    <a>Course One Workbook</a>
-                                </div>
-                            </div>
-                            <div class="align-items-baseline d-flex">
-                                <div class="d-flex flex-column pr-4 align-items-center">
-                                    <div class="mentor-detail">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="8" cy="8" r="7.25" fill="white" stroke="#7B8392"
-                                                stroke-width="1.5" />
-                                        </svg> &nbsp;
-
-                                    </div>
-                                    <div class="line h-100"></div>
-                                </div>
-                                <div class="mt-2px">
-                                    <label for="">Module One</label>
-                                    <a>Understanding the YOU behind your business</a>
-                                </div>
-                            </div>
-
-                            <div class="align-items-baseline d-flex">
-                                <div class="d-flex flex-column pr-4 align-items-center">
-                                    <div class="mentor-detail">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM11.2243 5.57574C11.4586 5.81005 11.4586 6.18995 11.2243 6.42426L7.22426 10.4243C6.98995 10.6586 6.61005 10.6586 6.37574 10.4243L4.77574 8.82426C4.54142 8.58995 4.54142 8.21005 4.77574 7.97574C5.01005 7.74142 5.38995 7.74142 5.62426 7.97574L6.8 9.15147L8.58787 7.3636L10.3757 5.57574C10.6101 5.34142 10.9899 5.34142 11.2243 5.57574Z"
-                                                fill="#00CD83" />
-                                        </svg> &nbsp;
-                                    </div>
-                                    <div class="line h-100"></div>
-                                </div>
-                                <div class="mt-2px">
-                                    <label for="">Module Two</label>
-                                    <a>Understanding the Value of Your Brand</a>
-                                </div>
-                            </div>
-                            <div class="align-items-baseline d-flex">
-                                <div class="d-flex flex-column pr-4 align-items-center">
-                                    <div class="mentor-detail">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="8" cy="8" r="7.25" fill="white" stroke="#7B8392"
-                                                stroke-width="1.5" />
-                                        </svg> &nbsp;
-
-                                    </div>
-                                    <div class="line h-100"></div>
-                                </div>
-                                <div class="mt-2px">
-                                    <label for="">Module Three</label>
-                                    <a>Keeping your business on the right track</a>
-                                </div>
-                            </div>
-                            <div class="align-items-baseline d-flex">
-                                <div class="d-flex flex-column pr-4 align-items-center">
-                                    <div class="mentor-detail">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                        </svg>
+                                        <svg *ngIf="!slide.isCompleted" width="16" height="16" viewBox="0 0 16 16"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <circle cx="8" cy="8" r="7.25" fill="white" stroke="#7B8392"
                                                 stroke-width="1.5" />
                                         </svg> &nbsp;
                                     </div>
-                                    <div class="line h-100"></div>
+                                    <div class="line h-100" *ngIf="index+1 < slides.length"></div>
                                 </div>
-                                <div class="mt-2px">
-                                    <label for="">Module Four</label>
-                                    <a>Keeping your business on the right track</a>
-                                </div>
-                            </div>
-                            <div class="align-items-baseline d-flex">
-                                <div class="d-flex flex-column pr-4 align-items-center">
-                                    <div class="mentor-detail">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="8" cy="8" r="7.25" fill="white" stroke="#7B8392"
-                                                stroke-width="1.5" />
-                                        </svg> &nbsp;
-
-                                    </div>
-                                </div>
-                                <div class="mt-2px">
-                                    <label for="">Module Five</label>
-                                    <a>Keeping your business on the right track</a>
+                                <div class="mt-2px cursor-pointer slide-name" [class.active]="selectedSlideId == slide._id" (click)="getSlideDetails(slide)">
+                                    {{slide?.name | titlecase}}
                                 </div>
                             </div>
                         </div>
@@ -178,24 +65,14 @@
                 </div>
                 <div class="col">
                     <section>
-                        <h3>Course One Workbook</h3>
-                        <span class="lesson">8 of 16 Modules Completed</span>
-                        <!-- <video width="100%" height="340" controls>
-                        <source src="movie.mp4" type="video/mp4">
-                        <source src="movie.ogg" type="video/ogg">
-                        Your browser does not support the video tag.
-                    </video> -->
-                        <p>In this module, we are going to explore what it is that you value on a personal level, how
-                            that
-                            translates to your business and understanding your WHY—that emotional reason for having your
-                            business!
-                            When you have clarity on who you are, you will have clarity on your business and your brand.
-                            This
-                            knowledge will boost your confidence and ultimately point you in the direction you want to
-                            go.
-                            We’re also going to explore the types of goals that help push your business forward and
-                            light a fire under
-                            your ass! Let’s get started!</p>
+                        <h3>{{slideDetails?.name | titlecase}}</h3>
+                        <!-- <span class="lesson">8 of 16 Modules Completed</span> -->
+                        <video width="100%" height="340" controls *ngIf="slideDetails?.type == 'video'">
+                            <source src="movie.mp4" type="video/mp4">
+                            <source src="movie.ogg" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p *ngIf="slideDetails?.type == 'text'">{{slideDetails?.text}}</p>
                     </section>
                 </div>
             </div>

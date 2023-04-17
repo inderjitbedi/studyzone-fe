@@ -13,6 +13,9 @@ export namespace Constants {
     LOGIN: '/login',
     DASHBOARD: '/dashboard',
     ALL_COURSES: '/dashboard/courses/all',
+    MY_COURSES: '/dashboard/courses/my-courses',
+    MY_COURSE_DETAILS: '/dashboard/courses/my-course/:id/details',
+    SLIDE_DETAILS: '/dashboard/courses/my-course/:id/slide/:slideid',
   };
   export const ErrorMessages = {
     serverError: 'Server Error.',

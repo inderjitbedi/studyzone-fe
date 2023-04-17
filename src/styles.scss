@@ -100,13 +100,16 @@ button,
         background-color: $primary-color;
         color: #FFFFFF;
     }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 }
 
 .form-control {
     &:focus {
         box-shadow: none;
         background-color: #F2F2F2;
-
     }
 }
 
@@ -381,7 +384,7 @@ footer {
     text-align: center;
     color: #A0A5B0;
     background: #F3F3F3;
-    position: sticky;
+    position: fixed;
     bottom: 0;
     width: 100%;
 
@@ -426,12 +429,9 @@ nav {
             }
 
             a {
-                text-decoration: none;
-                color: #8F8F8F;
-
-
+                text-decoration: none !important;
+                color: #8F8F8F !important;
             }
-
 
         }
     }
@@ -460,7 +460,8 @@ article {
         text-decoration: none;
         color: #3F3F3F;
     }
-    .mentor-detail{
+
+    .mentor-detail {
         line-height: 0;
     }
 }
@@ -534,6 +535,7 @@ article {
 
 .stepper {
     font-size: 14px;
+
     .line {
         width: 2px;
         min-height: 40px;
@@ -574,4 +576,7 @@ article {
 
 .pl-0 {
     padding-left: 0;
+}
+.cursor-pointer{
+    cursor: pointer;
 }
