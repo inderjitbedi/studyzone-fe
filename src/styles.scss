@@ -459,6 +459,7 @@ article {
         text-align: left;
         text-decoration: none;
         color: #3F3F3F;
+        margin-left: 5px;
     }
 
     .mentor-detail {
@@ -578,6 +579,14 @@ article {
 
 .pl-0 {
     padding-left: 0;
+}
+
+.pl-5 {
+    padding-left: 5px;
+}
+
+.mt-n5 {
+    margin-top: -5px;
 }
 
 .cursor-pointer {
