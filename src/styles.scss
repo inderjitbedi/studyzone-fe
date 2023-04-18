@@ -535,6 +535,8 @@ article {
 
 .stepper {
     font-size: 14px;
+    max-height: 555px;
+    overflow-y: auto;
 
     .line {
         width: 2px;
@@ -596,4 +598,14 @@ article {
 
 pdf-viewer {
     overflow-x: auto;
+}
+
+audio {
+    margin: 40px auto;
+    width: 100%;
+}
+
+video {
+    max-height: 555px;
+    height: 100%;
 }
