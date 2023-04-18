@@ -33,11 +33,25 @@
                                 *ngIf="courseDetails.type =='private'">Private</span>
                         </div>
                         <p>{{courseDetails.description || 'No description added'}}</p>
-                        <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid'" (click)="requestEnrollment()"
-                            [disabled]="courseDetails.enrollmentStatus == 'pending'">
-                            {{courseDetails.enrollmentStatus === "pending" ? "Requested":"Enroll Me"}}</button>
-                        <button class="btn enroll-btn" *ngIf="courseDetails.type =='public'"
-                            (click)="enrollCourse()">Start</button>
+
+
+                        <button class="btn enroll-btn"
+                            *ngIf="courseDetails.type =='paid' &&  courseDetails.enrollmentStatus == 'not_enrolled'"
+                            (click)="requestEnrollment()" [disabled]="courseDetails.enrollmentStatus == 'pending'">
+                            {{courseDetails.enrollmentStatus === "pending" ? "Requested":"Enroll Me"}}
+                        </button>
+                        <button class="btn enroll-btn"
+                            *ngIf="!courseDetails.hasAlreadyStarted &&  (courseDetails.type =='public' )"
+                            (click)="enrollCourse()">Start Course</button>
+
+
+                        <i class="badge-danger"
+                            *ngIf="courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'declined'">Sorry,
+                            unfortunately your enollment request have been declined by the Administrator.</i>
+
+                        <button class="btn enroll-btn"
+                            *ngIf="courseDetails.hasAlreadyStarted || courseDetails.type =='private' || (courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'accepted')"
+                            (click)="resumeCourse()">Resume</button>
                     </div>
 
                 </div>

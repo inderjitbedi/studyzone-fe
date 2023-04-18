@@ -73,8 +73,11 @@ export class CourseDetailComponent implements OnInit {
         });
     }
   }
+  resumeCourse() {
+    this.router.navigate([Constants.Pages.MY_COURSE_DETAILS.replace(':id', this.selectedCourseId)])
+
+  }
   enrollCourse() {
-    // 
     this.apiCallActive = true;
     this.apiService
       .post(apiConstants.enrollCourse.replace(":id", this.selectedCourseId), {})
