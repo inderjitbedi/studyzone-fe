@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { MyCoursesDetailsComponent } from './my-courses-details/my-courses-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 const routes = [
   { path: 'all', component: AllCoursesComponent },
@@ -25,6 +26,6 @@ const routes = [
   ],
   imports: [RouterModule, RouterModule.forChild(routes), CommonModule,
     ReactiveFormsModule,
-    FormsModule,],
+    FormsModule,PdfViewerModule],
 })
 export class CoursesModule { }
