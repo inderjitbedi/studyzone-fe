@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col py-32">
                 <h2>My Courses</h2>
-                <span>7 courses</span>
+                <span>{{totalCourses||0}} courses</span>
             </div>
             <div class="col py-32 form-style ml-auto">
                 <form class="form-inline justify-content-end align-items-baseline" [formGroup]="searchForm">
@@ -41,7 +41,8 @@
                 <div class="card p-3  my-courses">
                     <div class="row">
                         <div class="col-4">
-                            <img src="../assets/jillyAcadey.png" class="card-img-top" alt="...">
+                            <img [src]="enrollment?.course?.cover?.path? baseUrl + enrollment?.course?.cover?.path:'../assets/jillyAcadey.png'"
+                                class="card-img-top" alt="...">
                         </div>
                         <div class="col">
                             <div class="course-in-progress ">
@@ -57,6 +58,11 @@
 
                 </div>
             </div>
+        </div>
+        <div class="row text-center">
+            <a (click)="getCourses()" class="view-course"
+                *ngIf="pagination.totalPages &&pagination.totalPages !=pagination.currentPage">Load
+                more</a>
         </div>
     </div>
 </main>

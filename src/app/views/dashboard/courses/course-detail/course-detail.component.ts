@@ -4,6 +4,7 @@ import { apiConstants } from 'src/app/providers/api.constants';
 import { CommonAPIService } from 'src/app/providers/api.service';
 import { Constants } from 'src/app/providers/constant';
 import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-course-detail',
@@ -11,6 +12,7 @@ import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
   styleUrls: ['./course-detail.component.scss']
 })
 export class CourseDetailComponent implements OnInit {
+  baseUrl: any = environment.baseUrl;
   selectedCourseId: any;
   constructor(private router: Router,
     private activeRoute: ActivatedRoute,

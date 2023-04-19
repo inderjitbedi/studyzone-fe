@@ -5,6 +5,7 @@ import { debounceTime } from 'rxjs';
 import { apiConstants } from 'src/app/providers/api.constants';
 import { CommonAPIService } from 'src/app/providers/api.service';
 import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-all-courses',
@@ -12,6 +13,7 @@ import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
   styleUrls: ['./all-courses.component.scss'],
 })
 export class AllCoursesComponent implements OnInit {
+  baseUrl: any = environment.baseUrl;
   constructor(
     private router: Router,
     private apiService: CommonAPIService, private formBuilder: FormBuilder,
