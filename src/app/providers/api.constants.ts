@@ -1,5 +1,7 @@
 export const apiConstants = {
   signin: 'auth/login',
+  signup: 'auth/login',
+  emailUniqueness: 'auth/check-uniqueness-email/',
 
   allCourses: 'user/course/all',
   myCourses: 'user/course/my-courses',
@@ -9,10 +11,8 @@ export const apiConstants = {
   getMyCourseDetails: 'user/course/my-course/:id/details',
   getSlideDetails: 'user/course/:id/slide/:slideid/details',
 
-  markProgress:'user/course/:id/slide/:slideid/markProgress',
-  getProgress:'user/course/:id/getProgress',
-  dummy:'user/dummy',
-  
+  markProgress: 'user/course/:id/slide/:slideid/markProgress',
+  getProgress: 'user/course/:id/getProgress',
 
 
   addComment: 'user/course/:id/comment',
