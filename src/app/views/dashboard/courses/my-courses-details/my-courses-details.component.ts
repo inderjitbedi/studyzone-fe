@@ -67,6 +67,10 @@ export class MyCoursesDetailsComponent implements OnInit {
   slideDetails: any = {};
   selectedSlideId: any;
   getSlideDetails(slide: any) {
+    if (this.slideDetails?._id) {
+      if (!this.slideDetails.isCompleted)
+        this.markProgress(this.slideDetails, true);
+    }
     this.apiCallActive = true;
     this.apiService
       .get(apiConstants.getSlideDetails.replace(":id", this.selectedCourseId).replace(':slideid', slide._id))
@@ -95,8 +99,9 @@ export class MyCoursesDetailsComponent implements OnInit {
       .post(apiConstants.markProgress.replace(":id", this.selectedCourseId).replace(':slideid', slide._id), { isCompleted })
       .subscribe({
         next: (data) => {
-          console.log(slide.name, " = markProgress:isCompleted = ", data.progress.isCompleted);
+          // console.log(slide.name, " = markProgress:isCompleted = ", data.progress.isCompleted);
           this.slides[slide.position - 1].isCompleted = data.progress.isCompleted;
+          this.getProgress();
         },
         error: (e) => {
           this.errorHandlingService.handle(e);
@@ -105,16 +110,21 @@ export class MyCoursesDetailsComponent implements OnInit {
   }
 
   progress: any;
+  percentComplete: any = 0;
   getProgress() {
     this.apiService
       .get(apiConstants.getProgress.replace(":id", this.selectedCourseId))
       .subscribe({
-        next: ({ progress }) => {
+        next: ({ progress, percentComplete }) => {
           this.progress = progress
-          let selectedSilde = progress[0] ? progress[0].slide : this.slides[0]
-          this.getSlideDetails(selectedSilde)
-          this.selectedSlideId = selectedSilde._id;
-          this._location.go(Constants.Pages.SLIDE_DETAILS.replace(':id', this.selectedCourseId).replace(':slideid', this.selectedSlideId));
+          this.percentComplete = percentComplete;
+
+          if (!this.slideDetails._id) {
+            let selectedSilde = progress[0] ? progress[0].slide : this.slides[0];
+            this.getSlideDetails(selectedSilde)
+            this.selectedSlideId = selectedSilde._id;
+            this._location.go(Constants.Pages.SLIDE_DETAILS.replace(':id', this.selectedCourseId).replace(':slideid', this.selectedSlideId));
+          }
         },
         error: (e) => {
           this.errorHandlingService.handle(e);
@@ -126,9 +136,12 @@ export class MyCoursesDetailsComponent implements OnInit {
     let slide = this.slides.filter((slide: any) => this.slideDetails.position + 1 == slide.position)[0];
     if (slide) {
       this.markProgress(this.slideDetails, true);
-
       this.getSlideDetails(slide)
     }
+  }
+
+  finishCourse() {
+    this.back()
   }
 
 }

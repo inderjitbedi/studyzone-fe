@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { apiConstants } from 'src/app/providers/api.constants';
 import { CommonAPIService } from 'src/app/providers/api.service';
@@ -18,7 +18,12 @@ import { debounceTime } from 'rxjs';
 })
 export class SignupComponent implements OnInit {
 
-  signUpForm: FormGroup;
+  isErrorState(control: AbstractControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+
+  signupForm: FormGroup;
   constructor(
     private errorHandlingService: ErrorHandlingService,
     private formBuilder: FormBuilder,
@@ -29,7 +34,7 @@ export class SignupComponent implements OnInit {
 
 
 
-    this.signUpForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
       email: ['', [
         Validators.required,
         Validators.pattern(Validator.emailValidator.pattern)],
@@ -41,19 +46,19 @@ export class SignupComponent implements OnInit {
     });
     this.activeRoute.params.subscribe({
       next: ({ inviteToken }: any) => {
-        this.signUpForm.controls['inviteToken'].setValue(inviteToken);
+        this.signupForm.controls['inviteToken'].setValue(inviteToken);
       }
     })
-    this.signUpForm.controls['email'].valueChanges.pipe(debounceTime(500)).subscribe((email: any) => {
-      if (email && this.signUpForm.controls['email'].valid) {
+    this.signupForm.controls['email'].valueChanges.pipe(debounceTime(500)).subscribe((email: any) => {
+      if (email && this.signupForm.controls['email'].valid) {
         this.apiService.get(apiConstants.emailUniqueness + email).subscribe({
           next: (data) => {
             // if (data && (data.statusCode === 200)) {
-            if (data.isUnique === true) {
-              this.signUpForm.controls['email'].setErrors({ 'not_unique': true });
+            if (data.isUnique !== true) {
+              this.signupForm.controls['email'].setErrors({ 'not_unique': true });
             } else {
-              if (this.signUpForm.controls['email'].errors) {
-                delete this.signUpForm.controls['email'].errors['not_unique'];
+              if (this.signupForm.controls['email'].errors) {
+                delete this.signupForm.controls['email'].errors['not_unique'];
               }
             }
             // } else {
@@ -67,43 +72,43 @@ export class SignupComponent implements OnInit {
       }
     })
 
-    this.signUpForm.controls['password'].valueChanges.subscribe(password => {
-      if (this.signUpForm.controls['password'].valid) {
-        if (this.signUpForm.controls['confirmPassword'].errors) {
-          delete this.signUpForm.controls['confirmPassword'].errors['invalid-password'];
+    this.signupForm.controls['password'].valueChanges.subscribe(password => {
+      if (this.signupForm.controls['password'].valid) {
+        if (this.signupForm.controls['confirmPassword'].errors) {
+          delete this.signupForm.controls['confirmPassword'].errors['invalid-password'];
         }
-        if (this.signUpForm.controls['password'].value !== this.signUpForm.controls['confirmPassword'].value) {
-          this.signUpForm.controls['confirmPassword'].setErrors({ 'password-mismatch': true });
+        if (this.signupForm.controls['password'].value !== this.signupForm.controls['confirmPassword'].value) {
+          this.signupForm.controls['confirmPassword'].setErrors({ 'password-mismatch': true });
         } else {
-          if (this.signUpForm.controls['confirmPassword'].errors) {
-            delete this.signUpForm.controls['confirmPassword'].errors['password-mismatch'];
+          if (this.signupForm.controls['confirmPassword'].errors) {
+            delete this.signupForm.controls['confirmPassword'].errors['password-mismatch'];
           }
         }
-        if (this.signUpForm.controls['confirmPassword'].errors) {
-          this.signUpForm.controls['confirmPassword'].setErrors(null);
+        if (this.signupForm.controls['confirmPassword'].errors) {
+          this.signupForm.controls['confirmPassword'].setErrors(null);
         }
       } else {
-        if (this.signUpForm.controls['confirmPassword'].value) {
-          this.signUpForm.controls['confirmPassword'].setErrors({ 'invalid-password': true });
+        if (this.signupForm.controls['confirmPassword'].value) {
+          this.signupForm.controls['confirmPassword'].setErrors({ 'invalid-password': true });
         }
       }
 
     });
-    this.signUpForm.controls['confirmPassword'].valueChanges.subscribe(confirmPassword => {
-      if (confirmPassword && this.signUpForm.controls['confirmPassword'].valid) {
-        if (this.signUpForm.controls['password'].valid) {
-          if (this.signUpForm.controls['password'].value !== this.signUpForm.controls['confirmPassword'].value) {
-            this.signUpForm.controls['confirmPassword'].setErrors({ 'password-mismatch': true });
+    this.signupForm.controls['confirmPassword'].valueChanges.subscribe(confirmPassword => {
+      if (confirmPassword && this.signupForm.controls['confirmPassword'].valid) {
+        if (this.signupForm.controls['password'].valid) {
+          if (this.signupForm.controls['password'].value !== this.signupForm.controls['confirmPassword'].value) {
+            this.signupForm.controls['confirmPassword'].setErrors({ 'password-mismatch': true });
           } else {
-            if (this.signUpForm.controls['confirmPassword'].errors) {
-              delete this.signUpForm.controls['confirmPassword'].errors['password-mismatch'];
+            if (this.signupForm.controls['confirmPassword'].errors) {
+              delete this.signupForm.controls['confirmPassword'].errors['password-mismatch'];
             }
           }
-          if (this.signUpForm.controls['confirmPassword'].errors) {
-            delete this.signUpForm.controls['confirmPassword'].errors['invalid-password'];
+          if (this.signupForm.controls['confirmPassword'].errors) {
+            delete this.signupForm.controls['confirmPassword'].errors['invalid-password'];
           }
         } else {
-          this.signUpForm.controls['confirmPassword'].setErrors({ 'invalid-password': true });
+          this.signupForm.controls['confirmPassword'].setErrors({ 'invalid-password': true });
         }
       }
     });
@@ -118,9 +123,9 @@ export class SignupComponent implements OnInit {
   }
 
   signup(): void {
-    if (this.signUpForm.valid) {
+    if (this.signupForm.valid) {
       this.apiService
-        .post(apiConstants.signin, this.signUpForm.value)
+        .post(apiConstants.signin, this.signupForm.value)
         .subscribe({
           next: (data) => {
             console.log(data);

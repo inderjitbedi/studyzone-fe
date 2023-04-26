@@ -6,12 +6,14 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from 'src/app/providers/auth.guard';
 
 const routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'signup/:inviteToken', component: SignupComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'signup/:inviteToken?', component: SignupComponent, canActivate: [AuthGuard] },
+  { path: 'signup', component: SignupComponent, canActivate: [AuthGuard] },
+  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthGuard] },
+  { path: 'reset-password', component: ResetPasswordComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' },
 ];
 
@@ -29,4 +31,4 @@ const routes = [
     FormsModule,
   ],
 })
-export class AuthModule {}
+export class AuthModule { }

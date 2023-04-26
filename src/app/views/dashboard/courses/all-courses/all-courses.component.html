@@ -44,7 +44,8 @@
                     
                     <div class="card-body">
                         <h5 class="card-title">{{course.name | titlecase}}</h5>
-                        <span class="lesson">{{course.slideCount}} lessons</span>
+                        <span class="lesson" *ngIf="course.slideCount">{{course.slideCount}} {{ course.slideCount < 2 ? 'lesson' : 'lessons' }}</span>
+                        <span class="lesson" *ngIf="!course.slideCount">No lessons added</span>
                         <p class="card-text">{{course.description || 'No description added'}}</p>
                         <div class="d-flex">
                             <span class="badge badge-pill badge-success" *ngIf="course.type =='public'">Free</span>
