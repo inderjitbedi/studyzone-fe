@@ -8,6 +8,7 @@ import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
 // import { ErrorStateMatcherService } from 'src/app/providers/error-matcher.service';
 import { Validator } from 'src/app/providers/Validator';
 import { debounceTime } from 'rxjs';
+import { ErrorStateMatcherService } from 'src/app/providers/error-matcher.service';
 
 
 
@@ -18,18 +19,15 @@ import { debounceTime } from 'rxjs';
 })
 export class SignupComponent implements OnInit {
 
-  isErrorState(control: AbstractControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
 
   signupForm: FormGroup;
+  isCompleteSignupPage: boolean = false;
   constructor(
     private errorHandlingService: ErrorHandlingService,
     private formBuilder: FormBuilder,
     private apiService: CommonAPIService,
     private activeRoute: ActivatedRoute,
-    private router: Router // public matcher: ErrorStateMatcherService
+    private router: Router, public matcher: ErrorStateMatcherService
   ) {
 
 
@@ -39,38 +37,42 @@ export class SignupComponent implements OnInit {
         Validators.required,
         Validators.pattern(Validator.emailValidator.pattern)],
       ],
-      inviteToken: ['', [Validators.required,]],
+      token: ['', [Validators.required,]],
       fullName: ['', [Validators.required,]],
       password: ['', [Validators.required, Validators.pattern(Validator.passwordValidator.pattern), this.noWhitespaceValidator]],
       confirmPassword: ['', [Validators.required]],
     });
     this.activeRoute.params.subscribe({
-      next: ({ inviteToken }: any) => {
-        this.signupForm.controls['inviteToken'].setValue(inviteToken);
+      next: ({ token, email }: any) => {
+        this.signupForm.controls['token'].setValue(token);
+        this.signupForm.controls['email'].setValue(email);
+        if(token && email){
+          this.isCompleteSignupPage=true;
+        }
       }
     })
-    this.signupForm.controls['email'].valueChanges.pipe(debounceTime(500)).subscribe((email: any) => {
-      if (email && this.signupForm.controls['email'].valid) {
-        this.apiService.get(apiConstants.emailUniqueness + email).subscribe({
-          next: (data) => {
-            // if (data && (data.statusCode === 200)) {
-            if (data.isUnique !== true) {
-              this.signupForm.controls['email'].setErrors({ 'not_unique': true });
-            } else {
-              if (this.signupForm.controls['email'].errors) {
-                delete this.signupForm.controls['email'].errors['not_unique'];
-              }
-            }
-            // } else {
-            //   this.errorHandlingService.handle(data);
-            // }
-          },
-          error: (e) => {
-            this.errorHandlingService.handle(e);
-          },
-        })
-      }
-    })
+    // this.signupForm.controls['email'].valueChanges.pipe(debounceTime(500)).subscribe((email: any) => {
+    //   if (email && this.signupForm.controls['email'].valid) {
+    //     this.apiService.get(apiConstants.emailUniqueness + email).subscribe({
+    //       next: (data) => {
+    //         // if (data && (data.statusCode === 200)) {
+    //         if (data.isUnique !== true) {
+    //           this.signupForm.controls['email'].setErrors({ 'not_unique': true });
+    //         } else {
+    //           if (this.signupForm.controls['email'].errors) {
+    //             delete this.signupForm.controls['email'].errors['not_unique'];
+    //           }
+    //         }
+    //         // } else {
+    //         //   this.errorHandlingService.handle(data);
+    //         // }
+    //       },
+    //       error: (e) => {
+    //         this.errorHandlingService.handle(e);
+    //       },
+    //     })
+    //   }
+    // })
 
     this.signupForm.controls['password'].valueChanges.subscribe(password => {
       if (this.signupForm.controls['password'].valid) {
@@ -124,8 +126,13 @@ export class SignupComponent implements OnInit {
 
   signup(): void {
     if (this.signupForm.valid) {
+      let token = this.signupForm.value.token;
+      // delete this.signupForm.value.token;
+      delete this.signupForm.value.confirmPassword;
+      console.log(this.signupForm.value);
+      
       this.apiService
-        .post(apiConstants.signin, this.signupForm.value)
+        .put(apiConstants.signup.replace(':token', token), this.signupForm.value)
         .subscribe({
           next: (data) => {
             console.log(data);

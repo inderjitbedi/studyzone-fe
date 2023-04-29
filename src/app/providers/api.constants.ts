@@ -1,7 +1,9 @@
 export const apiConstants = {
   signin: 'auth/login',
-  signup: 'auth/login',
+  signup: 'auth/complete-signup/:token',
   emailUniqueness: 'auth/check-uniqueness-email/',
+  forgotPassword: 'auth/forgot-password',
+  resetPassword: 'auth/reset-password/:token',
 
   allCourses: 'user/course/all',
   myCourses: 'user/course/my-courses',

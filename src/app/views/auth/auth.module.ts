@@ -10,10 +10,10 @@ import { AuthGuard } from 'src/app/providers/auth.guard';
 
 const routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'signup/:inviteToken?', component: SignupComponent, canActivate: [AuthGuard] },
+  { path: 'complete-signup/:email/:token', component: SignupComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthGuard] },
-  { path: 'reset-password', component: ResetPasswordComponent, canActivate: [AuthGuard] },
+  { path: 'reset-password/:token', component: ResetPasswordComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' },
 ];
 

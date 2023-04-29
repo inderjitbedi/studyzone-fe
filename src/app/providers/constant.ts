@@ -11,6 +11,10 @@ export namespace Constants {
 
   export const Pages = {
     LOGIN: '/login',
+    SIGNUP: '/auth/signup',
+    SIGNUP_TOKEN: '/auth/signup/',
+    FORGOT_PASSWORD: '/auth/forgot-password',
+    RESET_PASSWORD: '/auth/reset-password/',
     DASHBOARD: '/dashboard',
     ALL_COURSES: '/dashboard/courses/all',
     MY_COURSES: '/dashboard/courses/my-courses',
