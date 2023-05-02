@@ -12,19 +12,21 @@
             <h5>Profile Settings</h5>
             <p>Change your basic profile information.</p>
             <div class="form-style">
-              <form class="form-inline">
+              <form class="form-inline" [formGroup]="profileForm" #ngForm1="ngForm" (ngSubmit)="updateProfile()">
                 <div class="form-group pb-3">
                   <label for="InputName">Full Name</label>
-                  <input type="text" placeholder="Full Name" class="form-control mt-2 bg-white" id="InputName"
+                  <input type="text" placeholder="Full Name" formControlName="fullName"  class="form-control mt-2 bg-white" id="InputName"
                     aria-describedby="fullNameHelp">
+                    <span class="error"
+                    *ngIf="matcher.isErrorState(profileForm.controls['fullName'], ngForm1) && profileForm.controls['fullName'].hasError('required')">Required</span>
                 </div>
-                <div class="form-group pb-3">
+                <!-- <div class="form-group pb-3">
                   <label for="InputEMail">Email</label>
                   <input type="email" placeholder="Enter your email address" class="form-control mt-2 bg-white"
                     id="InputEmail" aria-describedby="emailHelp">
-                </div>
+                </div> -->
                 <div>
-                  <div class="form-check">
+                  <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="gridCheck1">
                     <label class="form-check-label" for="gridCheck1">
                       Please notify me about updates to my products.
@@ -41,8 +43,8 @@
                     <label class="form-check-label" for="gridCheck1">
                       Please email me about new courses and promotions.
                     </label>
-                  </div>
-                  <button class="btn my-3 w-128">Update</button>
+                  </div> -->
+                  <button class="btn my-3 w-128" type="submit">Update</button>
                 </div>
               </form>
             </div>
@@ -55,24 +57,50 @@
             <h5>Password</h5>
             <p>Change your password. Leave this blank to keep your current password.</p>
             <div class="form-style">
-              <form class="form-inline">
+              <form class="form-inline"  [formGroup]="changePasswordForm" #ngForm="ngForm" (ngSubmit)="changePassword()">
                 <div class="form-group pb-3">
                   <label for="InputPassword">New Password</label>
-                  <input type="password" placeholder="Enter Password" class="form-control mt-2" id="InputPassword"
+                  <input type="password" placeholder="Enter Password"  formControlName="newPassword"  class="form-control mt-2" id="InputPassword"
                     aria-describedby="passwordHelp">
+                    <span class="error"
+                            *ngIf="matcher.isErrorState(changePasswordForm.controls['newPassword'], ngForm) && changePasswordForm.controls['newPassword'].hasError('required')">Required</span>
+                        <span class="error" *ngIf="changePasswordForm.controls['newPassword'].hasError('whitespace')">
+                            Password
+                            can't contain a blank space.</span>
+                        <span class="error" *ngIf=" changePasswordForm.controls['newPassword'].hasError('pattern')">Password
+                            should
+                            be min of 8
+                            characters and must include atleast one uppercase, lowercase, number, and a special
+                            character.
+                        </span>
                 </div>
                 <div class="form-group pb-3">
                   <label for="InputConfirmPassword">Confirm New Password</label>
-                  <input type="password" placeholder="Confirm Password" class="form-control mt-2"
+                  <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" class="form-control mt-2"
                     id="InputConfirmPassword" aria-describedby="confirmPasswordHelp">
+                    <span class="error"
+                    *ngIf="matcher.isErrorState(changePasswordForm.controls['confirmPassword'], ngForm) && changePasswordForm.controls['confirmPassword'].hasError('required')">Required</span>
+                <span class="error"
+                    *ngIf="matcher.isErrorState(changePasswordForm.controls['confirmPassword'], ngForm) && changePasswordForm.controls['confirmPassword'].hasError('password-mismatch')">
+                    Confirm password does not
+                    match with New Password.</span>
+                <span class="error"
+                    *ngIf="matcher.isErrorState(changePasswordForm.controls['confirmPassword'], ngForm) && changePasswordForm.controls['confirmPassword'].hasError('invalid-password')">Please
+                    enter a valid
+                    New Password
+                    first.
+                </span>
                 </div>
                 <div>
                   <div class="form-group pb-3">
                     <label for="InputCurrentPassword">Current Password</label>
-                    <input type="password" placeholder="Enter Password" class="form-control mt-2"
+                    <input type="password" placeholder="Enter Password" formControlName="password" class="form-control mt-2"
                       id="InputCurrentPassword" aria-describedby="currentPasswordHelp">
+                       <span class="error"
+                    *ngIf="matcher.isErrorState(changePasswordForm.controls['password'], ngForm) && changePasswordForm.controls['password'].hasError('required')">Required</span>
+         
                   </div>
-                  <button class="btn my-3 w-128">Update</button>
+                  <button type="submit" class="btn my-3 w-128">Update</button>
                 </div>
               </form>
             </div>

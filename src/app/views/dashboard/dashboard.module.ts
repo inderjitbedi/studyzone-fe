@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { SettingsComponent } from './settings/settings.component';
 import { AuthGuard } from 'src/app/providers/auth.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
   {
@@ -14,14 +15,17 @@ const routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'setting', component: SettingsComponent,
+    path: 'settings', component: SettingsComponent,
     canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: 'courses' },
 ];
 
 @NgModule({
-  declarations: [DashboardComponent, HeaderComponent],
-  imports: [RouterModule, RouterModule.forChild(routes), CommonModule],
+  declarations: [DashboardComponent, HeaderComponent,SettingsComponent],
+  imports: [RouterModule,
+    RouterModule.forChild(routes),
+    CommonModule,
+    ReactiveFormsModule],
 })
 export class DashboardModule { }

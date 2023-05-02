@@ -5,9 +5,9 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 })
 export class EventEmitterService {
 
-  @Output() currentMonth: EventEmitter<any> = new EventEmitter();
+  @Output() profile: EventEmitter<any> = new EventEmitter();
 
-  currentMonthChanged(data:any): void {
-    this.currentMonth.emit(data);
+  profileUpdated(data:any): void {
+    this.profile.emit(data);
   }
 }

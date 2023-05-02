@@ -69,7 +69,7 @@
                                     {{(user?.firstName?(user?.firstName+' '+user?.lastName):user?.fullName)| titlecase}}
                                 </a>
                                 <div class="dropdown-menu" [class.active]="menuOpened" aria-labelledby="navbarDropdown">
-                                    <!-- <a class="dropdown-item" href="#">Settings</a> -->
+                                    <a class="dropdown-item" routerLink="/dashboard/settings">Settings</a>
                                     <a class="dropdown-item" (click)="logout()">Logout</a>
                                 </div>
                             </li>

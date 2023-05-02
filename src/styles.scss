@@ -135,6 +135,7 @@ h1 {
 
 .brand {
     cursor: pointer;
+
     svg {
         background: linear-gradient(180deg, #F5F5FF 0%, #E1E1FE 100%);
         box-shadow: 0px 1.04082px 2.08163px rgba(16, 24, 40, 0.05);
@@ -317,6 +318,19 @@ main {
         letter-spacing: 0em;
         text-align: left;
         color: #6D6D6D;
+        max-height: 75px;
+        position: relative;
+        overflow: hidden;
+        &:after {
+            content: "\02026";
+            position: absolute;
+            top: 3.4em;
+            right: 5px;
+            width: 1.5em;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 50%, #fff);
+            text-align: right;
+            vertical-align: bottom;
+        }
     }
 
 
@@ -621,9 +635,10 @@ video {
 }
 
 .card-img-top {
-   
+
     object-fit: cover;
 }
+
 .error {
     color: red;
     font-size: 14px;

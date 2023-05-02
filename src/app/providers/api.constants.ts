@@ -4,6 +4,7 @@ export const apiConstants = {
   emailUniqueness: 'auth/check-uniqueness-email/',
   forgotPassword: 'auth/forgot-password',
   resetPassword: 'auth/reset-password/:token',
+  
 
   allCourses: 'user/course/all',
   myCourses: 'user/course/my-courses',
@@ -15,20 +16,10 @@ export const apiConstants = {
 
   markProgress: 'user/course/:id/slide/:slideid/markProgress',
   getProgress: 'user/course/:id/getProgress',
-
+  changePassword: 'user/changePassword',
+  profile: 'user/profile',
 
   addComment: 'user/course/:id/comment',
   deleteComment: 'user/course/:id/comment/:commentId',
 
-  slide: 'user/course/:id/slide/list',
-  createSlide: 'user/course/:id/slide',
-  updateSlide: 'user/course/:id/slide/:slideid',
-  reorderSildes: 'user/course/:id/slide/list/reorder',
-  manageSlideAccess: 'user/course/manage-visibility/',
-  checkSlideUniqueness: 'user/check-uniqueness-course/',
-
-  courseEnrollment: 'user/course/:id/enrollUser',
-  getEnrollments: 'user/course/:id/getEnrollments',
-  getEnrollmentRequests: 'user/course/:id/getEnrollmentRequests',
-  getUsersToEnroll: 'user/course/:id/getUsersToEnroll',
 };

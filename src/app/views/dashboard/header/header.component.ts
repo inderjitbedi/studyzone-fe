@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthGuard } from 'src/app/providers/auth.guard';
+import { EventEmitterService } from 'src/app/providers/eventEmitter.provider';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,18 @@ import { AuthGuard } from 'src/app/providers/auth.guard';
 })
 export class HeaderComponent implements OnInit {
   currentUrl: any;
-  constructor(private router: Router, private authGuard: AuthGuard) {
+  constructor(private router: Router, private authGuard: AuthGuard, private emitter: EventEmitterService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.currentUrl = event.url;
       }
     });
+    this.emitter.profile.subscribe({
+      next: ({ user }: any) => {
+        localStorage.setItem('user', JSON.stringify(user))
+        this.getUser()
+      }
+    })
   }
   dropdownButton: any
   menuOpened: boolean = false;
@@ -28,11 +35,14 @@ export class HeaderComponent implements OnInit {
         this.menuOpened = false;
       }
     });
-    let userString = localStorage.getItem('user');
-    this.user = JSON.parse(userString + "");
-
+    this.getUser()
   }
   logout() {
     this.authGuard.logout()
+  }
+  getUser() {
+    let userString = localStorage.getItem('user');
+    this.user = JSON.parse(userString + "");
+
   }
 }
