@@ -396,6 +396,7 @@ nav {
     flex-direction: row;
     align-items: baseline;
     margin: 24px 0;
+    flex-wrap: wrap;
 
     .back-button,
     .download {
@@ -554,6 +555,11 @@ article {
         padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
     }
 
+    nav .back-button,
+    nav .download {
+        margin-top: 10px;
+    }
+
     .box,
     .forgot-password,
     .btn,
@@ -608,4 +614,11 @@ audio {
 video {
     max-height: 555px;
     height: 100%;
+}
+
+@media (max-width: 992px) {
+    button.navbar-toggler {
+        width: 55px !important;
+        height: 50px;
+    }
 }
