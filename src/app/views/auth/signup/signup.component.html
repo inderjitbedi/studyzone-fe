@@ -1,36 +1,78 @@
 <div class="container">
     <div class="row m-lg-5 no-gutters">
         <div class="col-md-6 bg-white py-2 p-lg-5 pl-100">
-            <div class="brand" routerLink="/login">
+            <div class="brand" routerLink="/auth/login">
+                <svg _ngcontent-hpa-c24="" width="7" height="12" viewBox="0 0 7 15" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path _ngcontent-hpa-c24=""
+                        d="M5.38247 10.9393L0.723485 6.37992C0.668185 6.32564 0.629107 6.26684 0.60625 6.20352C0.583024 6.14019 0.571411 6.07234 0.571411 5.99997C0.571411 5.9276 0.583024 5.85976 0.60625 5.79643C0.629107 5.73311 0.668185 5.6743 0.723485 5.62003L5.38247 1.04709C5.5115 0.920441 5.67279 0.857117 5.86634 0.857117C6.05989 0.857117 6.22579 0.924964 6.36404 1.06066C6.50229 1.19636 6.57141 1.35467 6.57141 1.53559C6.57141 1.71652 6.50229 1.87483 6.36404 2.01053L2.29952 5.99997L6.36404 9.98942C6.49307 10.1161 6.55759 10.272 6.55759 10.4573C6.55759 10.6429 6.48846 10.8036 6.35021 10.9393C6.21196 11.075 6.05067 11.1428 5.86634 11.1428C5.68201 11.1428 5.52072 11.075 5.38247 10.9393Z"
+                        fill="#3F3F3F"></path>
+                </svg>
                 Back
             </div>
             <h1 class="pb-3 pt-5">Create Account</h1>
             <div class="form-style ">
-                <form class="mb-5">
+                <form class="mb-5" [formGroup]="signupForm" #ngForm="ngForm" (ngSubmit)="signup()">
                     <div class="form-group pb-3">
                         <label for="InputFullName">Full Name</label>
-                        <input type="text" placeholder="Enter your full name" class="form-control mt-2"
-                            id="InputFullName" aria-describedby="fullNameHelp">
+                        <input type="text" formControlName="fullName" placeholder="Enter your full name"
+                            class="form-control mt-2" id="InputFullName" aria-describedby="fullNameHelp">
+
+                        <span class="error"
+                            *ngIf="matcher.isErrorState(signupForm.controls['fullName'], ngForm) && signupForm.controls['fullName'].hasError('required')">Required</span>
                     </div>
                     <div class="form-group pb-3">
                         <label for="InputEmail">Email</label>
-                        <input type="email" placeholder="Enter your email address" class="form-control mt-2"
-                            id="InputEmail" aria-describedby="emailHelp">
+                        <input type="email" [readOnly]="isCompleteSignupPage" formControlName="email" placeholder="Enter your email address"
+                            class="form-control mt-2" id="InputEmail" aria-describedby="emailHelp" autocomplete="off">
+                        <span class="error"
+                            *ngIf="matcher.isErrorState(signupForm.controls['email'], ngForm) && signupForm.controls['email'].hasError('required')">Required</span>
+                        <span class="error" *ngIf="signupForm.controls['email'].hasError('pattern')">Invalid
+                            email</span>
+                        <span class="error" *ngIf="signupForm.controls['email'].hasError('not_unique')">Email already
+                            registered</span>
                     </div>
                     <div class="form-group pb-3">
-                        <label for="InputCode">Confirmation Code</label>
-                        <input type="text" placeholder="Enter the confirmation code" class="form-control mt-2"
-                            id="InputCode" aria-describedby="codeHelp">
+                        <label for="InputCode">Invitation Token</label>
+                        <input type="text" [readOnly]="isCompleteSignupPage" formControlName="token" placeholder="Enter the invitation token"
+                            class="form-control mt-2" id="InputCode" aria-describedby="codeHelp">
+                        <span class="error"
+                            *ngIf="matcher.isErrorState(signupForm.controls['token'], ngForm) && signupForm.controls['token'].hasError('required')">Required</span>
+
                     </div>
                     <div class="form-group pb-3">
                         <label for="InputPassword">Password</label>
-                        <input type="password" placeholder="Enter password" class="form-control mt-2"
-                            id="InputPassword">
+                        <input type="password" formControlName="password" placeholder="Enter password"
+                            class="form-control mt-2" id="InputPassword" autocomplete="off">
+                        <span class="error"
+                            *ngIf="matcher.isErrorState(signupForm.controls['password'], ngForm) && signupForm.controls['password'].hasError('required')">Required</span>
+                        <span class="error" *ngIf="signupForm.controls['password'].hasError('whitespace')">
+                            Password
+                            can't contain a blank space.</span>
+                        <span class="error" *ngIf=" signupForm.controls['password'].hasError('pattern')">Password
+                            should
+                            be min of 8
+                            characters and must include atleast one uppercase, lowercase, number, and a special
+                            character.
+                        </span>
+
                     </div>
                     <div class="form-group pb-3">
                         <label for="InputCPassword">Confirm Password</label>
-                        <input type="password" placeholder="Enter confirm password" class="form-control mt-2"
-                            id="InputCPassword">
+                        <input type="password" formControlName="confirmPassword" placeholder="Enter confirm password"
+                            class="form-control mt-2" id="InputCPassword">
+                        <span class="error"
+                            *ngIf="matcher.isErrorState(signupForm.controls['confirmPassword'], ngForm) && signupForm.controls['confirmPassword'].hasError('required')">Required</span>
+                        <span class="error"
+                            *ngIf="matcher.isErrorState(signupForm.controls['confirmPassword'], ngForm) && signupForm.controls['confirmPassword'].hasError('password-mismatch')">
+                            Confirm password does not
+                            match with Password.</span>
+                        <span class="error"
+                            *ngIf="matcher.isErrorState(signupForm.controls['confirmPassword'], ngForm) && signupForm.controls['confirmPassword'].hasError('invalid-password')">Please
+                            enter a valid
+                            Password
+                            first.
+                        </span>
                     </div>
                     <button type="submit" class="btn mt-2">Submit</button>
 

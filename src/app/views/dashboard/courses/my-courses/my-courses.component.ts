@@ -6,6 +6,7 @@ import { apiConstants } from 'src/app/providers/api.constants';
 import { CommonAPIService } from 'src/app/providers/api.service';
 import { Constants } from 'src/app/providers/constant';
 import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-my-courses',
@@ -13,6 +14,7 @@ import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
   styleUrls: ['./my-courses.component.scss']
 })
 export class MyCoursesComponent implements OnInit {
+  baseUrl: any = environment.baseUrl;
   constructor(
     private router: Router,
     private apiService: CommonAPIService, private formBuilder: FormBuilder,
@@ -70,7 +72,6 @@ export class MyCoursesComponent implements OnInit {
           this.apiCallActive = false;
           // if (data.statusCode === 200) {
           this.courses = [...this.courses, ...courses];
-          console.log( this.courses );
           
           this.pagination.page++;
           this.pagination = { ...this.pagination, ...pagination }

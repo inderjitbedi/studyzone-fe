@@ -20,24 +20,31 @@
             <h1 class="pb-3 pt-5">Welcome <br />
                 To Study Zone</h1>
             <div class="form-style  ">
-                <form class="mb-5" [formGroup]="loginForm" (ngSubmit)="login()">
+                <form class="mb-5" [formGroup]="loginForm" #ngForm="ngForm" (ngSubmit)="login()">
                     <div class="form-group pb-3">
                         <label for="InputEmail">Email</label>
                         <input type="email" formControlName="email" placeholder="Enter your email address"
                             class="form-control mt-2" id="InputEmail" aria-describedby="emailHelp">
+                            <span class="error"
+                            *ngIf="matcher.isErrorState(loginForm.controls['email'], ngForm) && loginForm.controls['email'].hasError('required')">Required</span>
+                        <span class="error" *ngIf="loginForm.controls['email'].hasError('pattern')">Invalid
+                            email</span>
                     </div>
                     <div class="form-group pb-3">
                         <label for="InputPassword">Password</label>
                         <input type="password" formControlName="password" placeholder="Enter Password"
                             class="form-control mt-2" id="InputPassword">
+                            <span class="error"
+                            *ngIf="matcher.isErrorState(loginForm.controls['password'], ngForm) && loginForm.controls['password'].hasError('required')">Required</span>
+                       
                     </div>
                     <button class="btn mt-2">Login</button>
                     <div class="text-center pt-4 forgot-password">
-                        <a routerLink="/forgot-password">Forget Password?</a>
+                        <a routerLink="/auth/forgot-password">Forget Password?</a>
                     </div>
                 </form>
                 <div class="pt-sm-5 text-center box">
-                    New on Study Zone? <a routerLink="/signup">Create Account</a>
+                    New on Study Zone? <a routerLink="/auth/signup/">Create Account</a>
                 </div>
             </div>
 

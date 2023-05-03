@@ -31,16 +31,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   checkLogin(url: string): boolean {
     if (!localStorage.getItem('auth_token')) {
-      if (url.indexOf('login') === -1) {
-        console.log('here');
-
+      if (url.indexOf('auth') === -1) {
         this.router.navigate([Constants.Pages.LOGIN]);
         return false;
       } else {
         return true;
       }
     } else {
-      if (url.indexOf('login') > -1) {
+      if (url.indexOf('auth') > -1) {
         this.router.navigate([Constants.Pages.DASHBOARD]);
         return false;
       }

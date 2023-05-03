@@ -20,11 +20,13 @@
             </div>
         </div>
         <section>
-            <div class="row">
+            <div class="row" *ngIf="courseDetails?._id">
                 <div class="col">
                     <div class="card-body">
                         <h3 class="card-title">{{courseDetails.name | titlecase}}</h3>
-                        <span class="lesson">16 Modules Completed</span>
+                        <span class="lesson">
+                            <!-- 16 Modules Completed -->
+                        </span>
                         <div class="d-flex">
                             <span class="badge badge-pill badge-success"
                                 *ngIf="courseDetails.type =='public'">Free</span>
@@ -35,15 +37,16 @@
                         <p>{{courseDetails.description || 'No description added'}}</p>
 
 
-                        <button class="btn enroll-btn"
-                            *ngIf="courseDetails.type =='paid' &&  courseDetails.enrollmentStatus == 'not_enrolled'"
-                            (click)="requestEnrollment()" [disabled]="courseDetails.enrollmentStatus == 'pending'">
-                            {{courseDetails.enrollmentStatus === "pending" ? "Requested":"Enroll Me"}}
+                        <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid' &&  
+                            courseDetails.enrollmentStatus == 'not_enrolled'" (click)="requestEnrollment()">
+                            Enroll Me
                         </button>
-                        <button class="btn enroll-btn"
-                            *ngIf="!courseDetails.hasAlreadyStarted &&  (courseDetails.type =='public' )"
-                            (click)="enrollCourse()">Start Course</button>
 
+                        <button class="btn enroll-btn" *ngIf="!courseDetails.hasAlreadyStarted &&  
+                        (courseDetails.type =='public' )" (click)="enrollCourse()">Start Course</button>
+
+                        <i class="badge-danger"
+                            *ngIf="courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'pending'">Requested.</i>
 
                         <i class="badge-danger"
                             *ngIf="courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'declined'">Sorry,
@@ -56,7 +59,8 @@
 
                 </div>
                 <div class="col">
-                    <img src="../assets/jillyAcadey.png" class="card-img-top" alt="...">
+                    <img [src]="courseDetails?.cover?.path? baseUrl + courseDetails?.cover?.path:'../assets/jillyAcadey.png'"
+                        class="card-img-top" alt="...">
                 </div>
             </div>
         </section>

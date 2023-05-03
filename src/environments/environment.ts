@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
   production: false,
+  // baseUrl: 'https://elearningapi.chantsit.com/api/',
+
   baseUrl: 'http://127.0.0.1:4005/api/',
   version: '0.0.1',
 };

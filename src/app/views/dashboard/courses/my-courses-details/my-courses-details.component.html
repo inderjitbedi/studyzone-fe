@@ -9,12 +9,14 @@
                                 d="M5.38247 10.9393L0.723485 6.37992C0.668185 6.32564 0.629107 6.26684 0.60625 6.20352C0.583024 6.14019 0.571411 6.07234 0.571411 5.99997C0.571411 5.9276 0.583024 5.85976 0.60625 5.79643C0.629107 5.73311 0.668185 5.6743 0.723485 5.62003L5.38247 1.04709C5.5115 0.920441 5.67279 0.857117 5.86634 0.857117C6.05989 0.857117 6.22579 0.924964 6.36404 1.06066C6.50229 1.19636 6.57141 1.35467 6.57141 1.53559C6.57141 1.71652 6.50229 1.87483 6.36404 2.01053L2.29952 5.99997L6.36404 9.98942C6.49307 10.1161 6.55759 10.272 6.55759 10.4573C6.55759 10.6429 6.48846 10.8036 6.35021 10.9393C6.21196 11.075 6.05067 11.1428 5.86634 11.1428C5.68201 11.1428 5.52072 11.075 5.38247 10.9393Z"
                                 fill="#3F3F3F" />
                         </svg>
+
                         &nbsp; Back</a>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a (click)="back()">My Courses</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{courseDetails?.name|titlecase}}</li>
                     </ol>
-                    <a class="back-button ml-auto" *ngIf="slideDetails.position != slides.length"
+                    <!-- [class.ml-auto]="percentComplete != 100" -->
+                    <a class="back-button ml-auto"  *ngIf="slideDetails.position != slides.length"
                         (click)="nextSlide()">Next &nbsp;
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -22,8 +24,10 @@
                                 fill="#3F3F3F" />
                         </svg>
                     </a>
-                    <!-- <a class="back-button ml-auto" >Finish</a> -->
+                    <!-- slideDetails.position == slides.length  -->
+                    <a class="back-button" [class.ml-auto]="percentComplete == 100 &&  slideDetails.position == slides.length " *ngIf="percentComplete == 100" (click)="finishCourse()">Finish</a>
                     <a class="download">
+                        <!-- [class.ml-auto]="slideDetails.position == slides.length" -->
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M8 11.575C7.86667 11.575 7.74167 11.554 7.625 11.512C7.50833 11.4707 7.4 11.4 7.3 11.3L3.7 7.7C3.51667 7.51667 3.425 7.28333 3.425 7C3.425 6.71667 3.51667 6.48333 3.7 6.3C3.88333 6.11667 4.12067 6.02067 4.412 6.012C4.704 6.004 4.94167 6.09167 5.125 6.275L7 8.15V1C7 0.716667 7.096 0.479 7.288 0.287C7.47933 0.0956668 7.71667 0 8 0C8.28333 0 8.521 0.0956668 8.713 0.287C8.90433 0.479 9 0.716667 9 1V8.15L10.875 6.275C11.0583 6.09167 11.296 6.004 11.588 6.012C11.8793 6.02067 12.1167 6.11667 12.3 6.3C12.4833 6.48333 12.575 6.71667 12.575 7C12.575 7.28333 12.4833 7.51667 12.3 7.7L8.7 11.3C8.6 11.4 8.49167 11.4707 8.375 11.512C8.25833 11.554 8.13333 11.575 8 11.575ZM2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196 15.021 0 14.55 0 14V12C0 11.7167 0.0956668 11.479 0.287 11.287C0.479 11.0957 0.716667 11 1 11C1.28333 11 1.521 11.0957 1.713 11.287C1.90433 11.479 2 11.7167 2 12V14H14V12C14 11.7167 14.096 11.479 14.288 11.287C14.4793 11.0957 14.7167 11 15 11C15.2833 11 15.5207 11.0957 15.712 11.287C15.904 11.479 16 11.7167 16 12V14C16 14.55 15.8043 15.021 15.413 15.413C15.021 15.8043 14.55 16 14 16H2Z"
@@ -40,7 +44,8 @@
                 <div class="col-3">
                     <article>
                         <div class="stepper d-flex flex-column ml-2">
-                            <div class="align-items-baseline d-flex" *ngFor="let slide of slides; let index= index;">
+                            <div class="align-items-baseline d-flex mt-n5"
+                                *ngFor="let slide of slides; let index= index;">
                                 <div class="d-flex flex-column pr-4 align-items-center">
                                     <div class="mentor-detail">
                                         <svg *ngIf="slide.isCompleted" width="16" height="16" viewBox="0 0 16 16"
@@ -70,17 +75,18 @@
                         <h3>{{slideDetails?.name | titlecase}}</h3>
                         <!-- <span class="lesson">8 of 16 Modules Completed</span> -->
                         <video width="100%" height="340" controls *ngIf="slideDetails?.type == 'video'" autoplay>
-                            <source src="{{baseUrl + slideDetails?.file?.path }}" type="video/mp4">
+                            <source [src]="baseUrl + slideDetails?.file?.path" type="video/mp4">
                             <!-- <source src="movie.ogg" type="video/ogg"> -->
                             Your browser does not support the video tag.
                         </video>
                         <audio controls width="100%" height="340" *ngIf="slideDetails?.type == 'audio'" autoplay>
-                            <source src="{{baseUrl + slideDetails?.file?.path }}">
+                            <source [src]="baseUrl + slideDetails?.file?.path ">
                             Sorry, your browser does not support the audio element.
                         </audio>
                         <p *ngIf="slideDetails?.type == 'text'">{{slideDetails?.text}}</p>
-                        <pdf-viewer *ngIf="slideDetails?.type == 'pdf'" [src]="pdfSrc" [render-text]="true"
-                            [original-size]="false" style="width: 100%; height: 555px"></pdf-viewer>
+                        <pdf-viewer *ngIf="slideDetails?.type == 'pdf'" [src]="baseUrl + slideDetails?.file?.path "
+                            [render-text]="true" [original-size]="false"
+                            style="width: 100%; height: 555px"></pdf-viewer>
                     </section>
                 </div>
             </div>
