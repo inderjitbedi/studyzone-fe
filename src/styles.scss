@@ -646,15 +646,16 @@ video {
         width: 55px !important;
         height: 50px;
     }
+}
 
-    .card-img-top {
-        border-radius: 0.375rem;
-        object-fit: cover;
-    }
+.card-img-top {
+    border-radius: 0.375rem;
+    object-fit: cover;
+}
 
-    .error {
-        color: red;
-        font-size: 14px;
-        font-style: italic;
-        margin-left: auto;
-    }
+.error {
+    color: red;
+    font-size: 14px;
+    font-style: italic;
+    margin-left: auto;
+}
