@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { apiConstants } from 'src/app/providers/api.constants';
 import { CommonAPIService } from 'src/app/providers/api.service';
@@ -16,7 +17,7 @@ export class MyCoursesDetailsComponent implements OnInit {
   baseUrl: any = environment.baseUrl;
 
   selectedCourseId: any;
-  constructor(private router: Router,
+  constructor(private router: Router,public sanitizer: DomSanitizer,
     private activeRoute: ActivatedRoute,
     private apiService: CommonAPIService,
     private errorHandlingService: ErrorHandlingService, private _location: Location

@@ -16,7 +16,7 @@
                         <li class="breadcrumb-item active" aria-current="page">{{courseDetails?.name|titlecase}}</li>
                     </ol>
                     <!-- [class.ml-auto]="percentComplete != 100" -->
-                    <a class="back-button ml-auto"  *ngIf="slideDetails.position != slides.length"
+                    <a class="back-button ml-auto" *ngIf="slideDetails.position != slides.length"
                         (click)="nextSlide()">Next &nbsp;
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -25,7 +25,9 @@
                         </svg>
                     </a>
                     <!-- slideDetails.position == slides.length  -->
-                    <a class="back-button" [class.ml-auto]="percentComplete == 100 &&  slideDetails.position == slides.length " *ngIf="percentComplete == 100" (click)="finishCourse()">Finish</a>
+                    <a class="back-button"
+                        [class.ml-auto]="percentComplete == 100 &&  slideDetails.position == slides.length "
+                        *ngIf="percentComplete == 100" (click)="finishCourse()">Finish</a>
                     <a class="download">
                         <!-- [class.ml-auto]="slideDetails.position == slides.length" -->
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,7 +85,8 @@
                             <source [src]="baseUrl + slideDetails?.file?.path ">
                             Sorry, your browser does not support the audio element.
                         </audio>
-                        <p *ngIf="slideDetails?.type == 'text'">{{slideDetails?.text}}</p>
+                        <section *ngIf="slideDetails?.type == 'text'"
+                            [innerHtml]="sanitizer.bypassSecurityTrustHtml(slideDetails?.text)"></section>
                         <pdf-viewer *ngIf="slideDetails?.type == 'pdf'" [src]="baseUrl + slideDetails?.file?.path "
                             [render-text]="true" [original-size]="false"
                             style="width: 100%; height: 555px"></pdf-viewer>
