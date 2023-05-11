@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validator } from 'src/app/providers/Validator';
+import { AlertService } from 'src/app/providers/alert.service';
 import { apiConstants } from 'src/app/providers/api.constants';
 import { CommonAPIService } from 'src/app/providers/api.service';
 import { Constants } from 'src/app/providers/constant';
@@ -19,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private errorHandlingService: ErrorHandlingService,
     private formBuilder: FormBuilder,
-    private apiService: CommonAPIService,
+    private apiService: CommonAPIService, public alertService: AlertService,
     private router: Router, public matcher: ErrorStateMatcherService
   ) {
     this.forgotPasswordForm = this.formBuilder.group({
@@ -38,6 +39,7 @@ export class ForgotPasswordComponent implements OnInit {
           next: (data) => {
             console.log(data);
             // if (data.statusCode === 201 || data.statusCode === 200) {
+            this.alertService.notify(data.message);
             this.router.navigate([Constants.Pages.LOGIN]);
             // } else {
             //   this.errorHandlingService.handle(data);

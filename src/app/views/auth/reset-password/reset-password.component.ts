@@ -8,6 +8,7 @@ import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
 // import { ErrorStateMatcherService } from 'src/app/providers/error-matcher.service';
 import { Validator } from 'src/app/providers/Validator';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/providers/alert.service';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -19,7 +20,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private errorHandlingService: ErrorHandlingService,
     private formBuilder: FormBuilder,
-    private apiService: CommonAPIService,
+    private apiService: CommonAPIService, public alertService: AlertService,
     private activeRoute: ActivatedRoute, private router: Router,
     public matcher: ErrorStateMatcherService) {
 
@@ -98,6 +99,7 @@ export class ResetPasswordComponent implements OnInit {
           next: (data) => {
             console.log(data);
             // if (data.statusCode === 201 || data.statusCode === 200) {
+            this.alertService.notify(data.message);
             this.router.navigate([Constants.Pages.LOGIN]);
             // } else {
             //   this.errorHandlingService.handle(data);
