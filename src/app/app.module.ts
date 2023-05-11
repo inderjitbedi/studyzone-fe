@@ -13,9 +13,11 @@ import { AuthInterceptor } from './providers/auth.interceptor';
 import { GetSetService } from './providers/getSet.provider';
 import { LoaderInterceptor } from './providers/loader.interceptor';
 import { LoaderService } from './providers/loader.service';
+import { LoaderComponent } from './views/common/loader/loader.component';
+import { AlertDialogComponent } from './views/common/alert-dialog/alert-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoaderComponent, AlertDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,4 +38,6 @@ import { LoaderService } from './providers/loader.service';
   ],
   bootstrap: [AppComponent],
 })
+
+
 export class AppModule {}

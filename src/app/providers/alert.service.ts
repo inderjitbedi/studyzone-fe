@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
-// import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { EventEmitterService } from './eventEmitter.provider';
 
 @Injectable()
 export class AlertService {
   closeName = 'End Now';
-  // config: MatSnackBarConfig = { duration: 5000, horizontalPosition: 'right', verticalPosition: 'top' };
-  constructor() // private snackbar: MatSnackBar
-  {}
+  constructor(private eventEmitter: EventEmitterService) 
+  { this.notify()}
 
   notify(
-    message: string,
-    buttonName = this.closeName
-    //  config = this.config
+    message: string = '', type: string = 'success'
   ): void {
-    // this.snackbar.open(message, buttonName, config);
+    this.eventEmitter.toggleAlert({ message, type })
   }
 }

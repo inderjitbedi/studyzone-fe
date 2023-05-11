@@ -1,0 +1,43 @@
+.modal-footer,
+.modal-header,
+.modal-body {
+    border: 0;
+    justify-content: center;
+}
+.modal-header{
+    padding-top: 48px;
+}
+.modal-footer{
+    padding-bottom: 48px;
+}
+.modal-body{
+    padding: 0 16px;
+}
+.alert-message {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    color: #1D1D1D;
+}
+
+.alert-close {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 24px;
+    text-decoration-line: underline;
+    color: #007AFF;
+    cursor: pointer;
+}
+
+.modal-dialog{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: auto;
+}
+.modal{
+    background-color: rgba(0,0,0,0.7);
+}

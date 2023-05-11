@@ -60,7 +60,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   sessionExpired(message: string): void {
     this.clearAll();
-    this.alertService.notify(message || Constants.ErrorMessages.sessionExpired);
+    this.alertService.notify(message || Constants.ErrorMessages.sessionExpired,'error');
   }
 
   clearAll(): void {

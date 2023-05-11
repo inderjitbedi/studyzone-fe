@@ -10,4 +10,11 @@ export class EventEmitterService {
   profileUpdated(data:any): void {
     this.profile.emit(data);
   }
+  @Output() alert: EventEmitter<any> = new EventEmitter();
+
+  toggleAlert(data:any): void {
+    console.log('here in toggleAlert');
+
+    this.alert.emit(data);
+  }
 }

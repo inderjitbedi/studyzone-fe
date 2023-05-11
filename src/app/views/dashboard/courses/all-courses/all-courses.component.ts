@@ -77,6 +77,7 @@ export class AllCoursesComponent implements OnInit {
           console.log(this.pagination);
           this.pagination = { ...this.pagination, ...pagination }
           this.totalCourses = totalCourses;
+        
           // } else {
           //   this.errorHandlingService.handle(data);
           // }

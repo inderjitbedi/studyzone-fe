@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item">
                             <a (click)="back()">All Courses</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{courseDetails.name | titlecase}}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{courseDetails?.name | titlecase}}</li>
                     </ol>
                 </nav>
             </div>
@@ -23,7 +23,7 @@
             <div class="row" *ngIf="courseDetails?._id">
                 <div class="col">
                     <div class="card-body">
-                        <h3 class="card-title">{{courseDetails.name | titlecase}}</h3>
+                        <h3 class="card-title">{{courseDetails?.name | titlecase}}</h3>
                         <span class="lesson">
                             <!-- 16 Modules Completed -->
                         </span>
