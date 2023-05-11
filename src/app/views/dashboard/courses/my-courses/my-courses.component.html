@@ -8,7 +8,7 @@
             <div class="col py-32 form-style ml-auto">
                 <form class="form-inline justify-content-end align-items-baseline" [formGroup]="searchForm">
                     <div class="form-group">
-                        <select class="form-control all-courses" formControlName="type">
+                        <select class="form-control all-courses custom-select" formControlName="type">
                             <option value="">All</option>
                             <option value="public">Free</option>
                             <option value="private">Private</option>
@@ -36,6 +36,9 @@
             </div>
         </div>
         <div class="row">
+            <div class="pt-16 pr-16 pl-0 flex-center h-300" *ngIf="!courses?.length && !apiCallActive">
+                No data to show
+            </div>
             <div class="col-sm-6 col-md-6 col-lg-4 mb-3 cursor-pointer" *ngFor="let enrollment of courses"
                 (click)=" viewDetails(enrollment)">
                 <div class="card p-3  my-courses">
@@ -56,7 +59,8 @@
                                     Slides
                                     Completed</span>
                                 <span class="lesson" *ngIf="!enrollment.progress">Not started yet</span>
-                                <span class="lesson" *ngIf="enrollment.progress && enrollment.progress ==100">All Slides Completed</span>
+                                <span class="lesson" *ngIf="enrollment.progress && enrollment.progress ==100">All Slides
+                                    Completed</span>
                             </div>
                         </div>
                     </div>

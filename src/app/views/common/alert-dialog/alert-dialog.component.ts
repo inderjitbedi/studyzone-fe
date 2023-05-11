@@ -5,39 +5,32 @@ import { EventEmitterService } from 'src/app/providers/eventEmitter.provider';
 @Component({
   selector: 'app-alert-dialog',
   templateUrl: './alert-dialog.component.html',
-  styleUrls: ['./alert-dialog.component.scss']
+  styleUrls: ['./alert-dialog.component.scss'],
 })
 export class AlertDialogComponent implements OnInit {
-  public dialogData: any = {}
-  // public matDialog: MatDialogRef<AlertDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any
+  public dialogData: any = {};
   constructor(private emitter: EventEmitterService) {
-    // let data:any={};
-    // this.dialogData = data;
-console.log("loaded");
-
     this.emitter.alert.subscribe({
       next: (data: any) => {
-        this.dialogData = data
-        this.openPopup()
+        this.dialogData = data;
+        this.openPopup();
         // if (data.autoClose) {
-          setTimeout(() => {
-            // this.closePopup()
-          }, data.autoClose||3000);
+        setTimeout(() => {
+          this.closePopup();
+        }, data.autoClose || 3000);
         // }
-
-      }
-    })
+      },
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  displayStyle = "none";
+  displayStyle = 'none';
 
   openPopup() {
-    this.displayStyle = "block";
+    this.displayStyle = 'block';
   }
   closePopup() {
-    this.displayStyle = "none";
+    this.displayStyle = 'none';
   }
 }

@@ -41,9 +41,12 @@
         </div>
         <hr>
         <section class="p-0 bg-gray mt-2">
-
+            <div class="pt-16 pr-16 pl-0 flex-center h-300" *ngIf="!slides?.length && !apiCallActive">
+                No data to show
+            </div>
             <div class="row">
-                <div class="col-3">
+
+                <div class="col-3" *ngIf="slides?.length">
                     <article>
                         <div class="stepper d-flex flex-column ml-2">
                             <div class="align-items-baseline d-flex mt-n5"
@@ -72,7 +75,7 @@
                         </div>
                     </article>
                 </div>
-                <div class="col">
+                <div class="col" *ngIf="slides?.length">
                     <section>
                         <h3>{{slideDetails?.name | titlecase}}</h3>
                         <!-- <span class="lesson">8 of 16 Modules Completed</span> -->

@@ -172,7 +172,7 @@ h1 {
     }
 
     .all-courses {
-        width: 95px;
+        width: 110px;
         font-size: 16px;
         font-family: 'Plus Jakarta Sans';
         padding: 12px 20px;
@@ -551,6 +551,10 @@ article {
     // margin-top: 2px;
 }
 
+.mt-10 {
+    margin-top: 10px;
+}
+
 .stepper {
     font-size: 14px;
     max-height: 555px;
@@ -660,3 +664,34 @@ video {
     margin-left: auto;
 }
 
+
+
+/* Hide the default arrow */
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('assets/svg/down-arrow.svg');
+    /* Replace with your caret image */
+    background-position: right 20% center;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+    /* Adjust as needed */
+}
+
+/* Style the dropdown */
+.custom-select::-ms-expand {
+    display: none;
+    /* Remove the default arrow on Internet Explorer */
+}
+
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.h-300 {
+    height: 300px;
+}

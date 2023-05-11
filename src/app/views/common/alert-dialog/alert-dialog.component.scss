@@ -4,15 +4,19 @@
     border: 0;
     justify-content: center;
 }
-.modal-header{
+
+.modal-header {
     padding-top: 48px;
 }
-.modal-footer{
+
+.modal-footer {
     padding-bottom: 48px;
 }
-.modal-body{
+
+.modal-body {
     padding: 0 16px;
 }
+
 .alert-message {
     font-weight: 700;
     font-size: 18px;
@@ -30,7 +34,7 @@
     cursor: pointer;
 }
 
-.modal-dialog{
+.modal-dialog {
     width: 500px;
     display: flex;
     justify-content: center;
@@ -38,6 +42,7 @@
     height: 100%;
     margin: auto;
 }
-.modal{
-    background-color: rgba(0,0,0,0.7);
+
+.modal {
+    background-color: rgb(205, 205, 205, 0.7)
 }
