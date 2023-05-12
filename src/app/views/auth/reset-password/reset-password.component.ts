@@ -91,13 +91,11 @@ export class ResetPasswordComponent implements OnInit {
       let token = this.resetPasswordForm.value.token;
       delete this.resetPasswordForm.value.token;
       delete this.resetPasswordForm.value.confirmPassword;
-      console.log(this.resetPasswordForm.value);
-
+      
       this.apiService
         .post(apiConstants.resetPassword.replace(':token', token), this.resetPasswordForm.value)
         .subscribe({
           next: (data) => {
-            console.log(data);
             // if (data.statusCode === 201 || data.statusCode === 200) {
             this.alertService.notify(data.message);
             this.router.navigate([Constants.Pages.LOGIN]);

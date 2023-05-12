@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/app/providers/alert.service';
 import { apiConstants } from 'src/app/providers/api.constants';
 import { CommonAPIService } from 'src/app/providers/api.service';
 import { Constants } from 'src/app/providers/constant';
@@ -16,7 +17,7 @@ export class CourseDetailComponent implements OnInit {
   selectedCourseId: any;
   constructor(private router: Router,
     private activeRoute: ActivatedRoute,
-    private apiService: CommonAPIService,
+    private apiService: CommonAPIService, public alertService: AlertService,
     private errorHandlingService: ErrorHandlingService,
   ) {
     this.activeRoute.params.subscribe({
@@ -66,6 +67,7 @@ export class CourseDetailComponent implements OnInit {
         .subscribe({
           next: (data) => {
             this.apiCallActive = false;
+            this.alertService.notify(data.message);
             this.getCourseDetails();
           },
           error: (e) => {
