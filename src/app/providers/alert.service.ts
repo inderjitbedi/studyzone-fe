@@ -6,7 +6,11 @@ export class AlertService {
   closeName = 'End Now';
   constructor(private eventEmitter: EventEmitterService) {}
 
-  notify(message: string = '', type: string = 'success'): void {
-    this.eventEmitter.toggleAlert({ message, type });
+  notify(
+    message: string = '',
+    type: string = 'success',
+    autoCloseTime: number = 3000
+  ): void {
+    this.eventEmitter.toggleAlert({ message, type, autoCloseTime });
   }
 }

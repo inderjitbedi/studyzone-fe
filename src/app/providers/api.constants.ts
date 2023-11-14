@@ -1,10 +1,10 @@
 export const apiConstants = {
   signin: 'auth/login',
-  signup: 'auth/complete-signup/:token',
+  completeSignup: 'auth/complete-signup/:token',
+  signup: 'auth/signup',
   emailUniqueness: 'auth/check-uniqueness-email/',
   forgotPassword: 'auth/forgot-password',
   resetPassword: 'auth/reset-password/:token',
-  
 
   allCourses: 'user/course/all',
   myCourses: 'user/course/my-courses',
@@ -21,5 +21,4 @@ export const apiConstants = {
 
   addComment: 'user/course/:id/comment',
   deleteComment: 'user/course/:id/comment/:commentId',
-
 };

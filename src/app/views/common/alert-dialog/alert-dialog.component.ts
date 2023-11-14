@@ -17,7 +17,7 @@ export class AlertDialogComponent implements OnInit {
         // if (data.autoClose) {
         setTimeout(() => {
           this.closePopup();
-        }, data.autoClose || 3000);
+        }, data.autoCloseTime || 3000);
         // }
       },
     });
