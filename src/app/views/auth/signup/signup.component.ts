@@ -199,7 +199,7 @@ export class SignupComponent implements OnInit {
             next: (data) => {
               console.log(data);
               this.alertService.notify(
-                'Thank you for signing up! Your account is pending admin approval.',
+                "Thanks for signing up! Your account awaits admin approval. We'll email you once it's approved.",
                 'success',
                 10000
               );
