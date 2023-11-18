@@ -25,6 +25,7 @@ import { AlertDialogComponent } from './views/common/alert-dialog/alert-dialog.c
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
+
     // LoaderModule,
   ],
   providers: [
@@ -38,6 +39,4 @@ import { AlertDialogComponent } from './views/common/alert-dialog/alert-dialog.c
   ],
   bootstrap: [AppComponent],
 })
-
-
 export class AppModule {}
