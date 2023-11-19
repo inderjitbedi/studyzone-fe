@@ -23,6 +23,7 @@ const routes = [
   { path: '**', redirectTo: 'all' },
 ];
 
+
 @NgModule({
   declarations: [
     AllCoursesComponent,

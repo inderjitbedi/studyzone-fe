@@ -1,0 +1,62 @@
+.blue-color{
+    color: hsl(211, 100%, 50%);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px; 
+}
+.rounded-card-heading{
+    margin:16px 0;
+    text-align: center;
+    display: block;
+    border-radius: 16px;
+    width: 178px;
+    border: 1px solid #D1D1D1;
+    background: #FFF;
+    padding: 16px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+}
+
+.card-number{
+    width: 373px;
+   display: block;
+    margin:0;
+    border-radius: 12px;
+    padding: 16px;
+    border-width: 0 0 1px 0 ;
+    border-color: #E7E7E7;
+   background-color: #FAFAFA;
+   .form-control{
+    padding: 0;
+   }
+}
+.expy-cvvdetails{
+    display: flex;
+    flex-direction: row;
+    width: 373px;
+    margin:0;
+    border-radius: 12px;
+    background-color: #FAFAFA;
+    .form-control{
+        border:0;
+        border-radius: 0;
+        padding: 16px;
+        background-color: #FAFAFA;
+    }
+}
+#InputEmail{
+    border-radius: 16px;
+    border: 1px solid #D1D1D1;
+    margin-bottom:16px;
+}
+.divider-vr{
+    width: 1px;
+    display: block;
+    margin:auto;
+    height: 100%;
+    background-color: #E7E7E7;
+}
+.btn-payment{
+    width: fit-content;
+    line-height: 16px;
+}
