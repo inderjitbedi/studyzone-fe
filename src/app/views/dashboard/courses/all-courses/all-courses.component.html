@@ -59,6 +59,7 @@
                                     <span class="badge badge-pill badge-danger" *ngIf="course.type =='paid'">Paid</span>
                                     <span class="badge badge-pill badge-light"
                                         *ngIf="course.type =='private'">Private</span>
+                                    <span class="card-title" *ngIf="course.type =='paid'">CA${{course.price||0}}</span>
                                     <a (click)="viewDetails(course)" class="view-course">View Course</a>
                                 </div>
                     </div>

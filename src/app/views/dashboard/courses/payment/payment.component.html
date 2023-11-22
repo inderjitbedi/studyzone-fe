@@ -24,25 +24,64 @@
       <div class="row" *ngIf="courseDetails?._id">
         <div class="col-6">
           <div class="card-body">
-            <h3 class="card-title">CA 80 $</h3>
+            <h3 class="card-title">CA ${{courseDetails.price}}</h3>
             <span class="lesson">
               <!-- 16 Modules Completed -->
             </span>
+            <p></p>
             <div class="d-flex">
-              <span class="badge badge-pill badge-success" *ngIf="courseDetails.type =='public'">Free</span>
+              <div style="width: 85%;">{{courseDetails.name | titlecase}}</div>
+              <div style="width: 15%;">CA${{courseDetails.price}}</div>
+
+              <!-- <span class="badge badge-pill badge-success" *ngIf="courseDetails.type =='public'">Free</span>
               <span class="badge badge-pill badge-danger" *ngIf="courseDetails.type =='paid'">Paid</span>
-              <span class="badge badge-pill badge-light" *ngIf="courseDetails.type =='private'">Private</span>
+              <span class="badge badge-pill badge-light" *ngIf="courseDetails.type =='private'">Private</span> -->
             </div>
-            <p>{{courseDetails.description || 'No description added'}}</p>
+            <hr>
+            <div class="d-flex">
+              <div style="width: 85%;"><span>Subtotal</span></div>
+              <div style="width: 15%;">CA${{courseDetails.price}}</div>
+            </div>
+            <div class="d-flex mt-10">
+              <span class="badge h-34 badge-pill badge-promo cursor-pointer" *ngIf="!promotionApplied && !addPromoCode"
+                (click)="addPromoCode = !addPromoCode">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M7.1943 2.4002C7.01166 2.55585 6.92033 2.63368 6.8228 2.69905C6.59922 2.84891 6.34813 2.95291 6.08407 3.00504C5.96888 3.02778 5.84928 3.03733 5.61006 3.05642C5.00902 3.10438 4.7085 3.12836 4.45778 3.21692C3.87788 3.42175 3.42175 3.87788 3.21692 4.45778C3.12836 4.7085 3.10438 5.00902 3.05642 5.61006C3.03733 5.84928 3.02778 5.96888 3.00504 6.08407C2.95291 6.34813 2.84891 6.59922 2.69905 6.8228C2.63368 6.92033 2.55586 7.01165 2.4002 7.1943C2.00913 7.65321 1.81358 7.88267 1.69891 8.12258C1.4337 8.67746 1.4337 9.32254 1.69891 9.87742C1.81358 10.1173 2.00912 10.3468 2.4002 10.8057C2.55584 10.9883 2.63369 11.0797 2.69905 11.1772C2.84891 11.4008 2.95291 11.6519 3.00504 11.9159C3.02778 12.0311 3.03733 12.1507 3.05642 12.3899C3.10438 12.991 3.12836 13.2915 3.21692 13.5422C3.42175 14.1221 3.87788 14.5783 4.45778 14.7831C4.7085 14.8716 5.00902 14.8956 5.61006 14.9436C5.84928 14.9627 5.96888 14.9722 6.08407 14.995C6.34813 15.0471 6.59922 15.1511 6.8228 15.3009C6.92033 15.3663 7.01165 15.4441 7.1943 15.5998C7.65322 15.9909 7.88267 16.1864 8.12258 16.3011C8.67746 16.5663 9.32254 16.5663 9.87742 16.3011C10.1173 16.1864 10.3468 15.9909 10.8057 15.5998C10.9883 15.4441 11.0797 15.3663 11.1772 15.3009C11.4008 15.1511 11.6519 15.0471 11.9159 14.995C12.0311 14.9722 12.1507 14.9627 12.3899 14.9436C12.991 14.8956 13.2915 14.8716 13.5422 14.7831C14.1221 14.5783 14.5783 14.1221 14.7831 13.5422C14.8716 13.2915 14.8956 12.991 14.9436 12.3899C14.9627 12.1507 14.9722 12.0311 14.995 11.9159C15.0471 11.6519 15.1511 11.4008 15.3009 11.1772C15.3663 11.0797 15.4441 10.9883 15.5998 10.8057C15.9909 10.3468 16.1864 10.1173 16.3011 9.87742C16.5663 9.32254 16.5663 8.67746 16.3011 8.12258C16.1864 7.88267 15.9909 7.65322 15.5998 7.1943C15.4441 7.01165 15.3663 6.92033 15.3009 6.8228C15.1511 6.59922 15.0471 6.34813 14.995 6.08407C14.9722 5.96888 14.9627 5.84928 14.9436 5.61006C14.8956 5.00902 14.8716 4.7085 14.7831 4.45778C14.5783 3.87788 14.1221 3.42175 13.5422 3.21692C13.2915 3.12836 12.991 3.10438 12.3899 3.05642C12.1507 3.03733 12.0311 3.02778 11.9159 3.00504C11.6519 2.95291 11.4008 2.84891 11.1772 2.69905C11.0797 2.63368 10.9883 2.55586 10.8057 2.4002C10.3468 2.00912 10.1173 1.81358 9.87742 1.69891C9.32254 1.4337 8.67746 1.4337 8.12258 1.69891C7.88267 1.81358 7.65321 2.00912 7.1943 2.4002ZM11.8732 6.12719C12.1116 6.36557 12.1116 6.75205 11.8732 6.99042L6.99002 11.8736C6.75165 12.112 6.36517 12.112 6.1268 11.8736C5.88842 11.6352 5.88842 11.2487 6.1268 11.0104L11.01 6.12719C11.2483 5.88882 11.6348 5.88882 11.8732 6.12719ZM11.8485 11.035C11.8485 11.4845 11.4841 11.8489 11.0346 11.8489C10.5852 11.8489 10.2208 11.4845 10.2208 11.035C10.2208 10.5856 10.5852 10.2212 11.0346 10.2212C11.4841 10.2212 11.8485 10.5856 11.8485 11.035ZM6.96534 7.7796C7.41482 7.7796 7.7792 7.41522 7.7792 6.96574C7.7792 6.51625 7.41482 6.15188 6.96534 6.15188C6.51586 6.15188 6.15148 6.51625 6.15148 6.96574C6.15148 7.41522 6.51586 7.7796 6.96534 7.7796Z"
+                    fill="#0072DB" />
+                </svg>
+                Add promotion code</span>
+            </div>
+            <div [formGroup]="promoCodeForm" *ngIf="!promotionApplied && addPromoCode">
+
+              <input type="text" formControlName="code" placeholder="Enter the promo code" class="form-control mt-2"
+                id="InputEmail" aria-describedby="emailHelp">
+              <!-- </div> -->
+              <span class="badge h-34 badge-pill badge-promo cursor-pointer" (click)="applyPromo()">Apply</span>
+
+            </div>
+            <div class="d-flex mt-10" *ngIf="promotionApplied">
+              <!-- <div class="form-group pb-3"> -->
+              <div style="width: 85%;"><span>Discount</span></div>
+              <div style="width: 15%; color:#007AFF">- CA${{couponResponse?.couponValue}}</div>
+              <span class="badge h-34 badge-pill badge-promo cursor-pointer" (click)="removeCoupon()">Remove</span>
+
+            </div>
+            <hr>
+            <div class="d-flex">
+              <div style="width: 85%;"><span>Total Amount</span></div>
+              <div style="width: 15%;">CA${{couponResponse?.finalPrice || courseDetails.price}}</div>
+            </div>
+            <!-- <p>{{courseDetails.description || 'No description added'}}</p> -->
 
 
-            <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid' &&  
+            <!-- <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid' &&  
                           courseDetails.enrollmentStatus == 'not_enrolled'" (click)="requestEnrollment()">
               Enroll Me
-            </button>
+            </button> -->
 
-            <button class="btn enroll-btn" *ngIf="!courseDetails.hasAlreadyStarted &&  
-                      (courseDetails.type =='public' )" (click)="enrollCourse()">Start Course</button>
+            <!-- <button class="btn enroll-btn" *ngIf="!courseDetails.hasAlreadyStarted &&  
+                      (courseDetails.type =='public' )" (click)="enrollCourse()">Start Course</button>  -->
 
 
           </div>
@@ -68,25 +107,34 @@
             </div> -->
             <div class="form-group">
               <label for="InputEmail">Payment Method</label><br />
-              <label class="rounded-card-heading blue-color" ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 4H10C6.22876 4 4.34315 4 3.17157 5.17157C2.32803 6.01511 2.09185 7.22882 2.02572 9.25H21.9743C21.9082 7.22882 21.672 6.01511 20.8284 5.17157C19.6569 4 17.7712 4 14 4Z" fill="#007AFF"/>
-                <path d="M10 20H14C17.7712 20 19.6569 20 20.8284 18.8284C22 17.6569 22 15.7712 22 12C22 11.5581 22 11.142 21.9981 10.75H2.00189C2 11.142 2 11.5581 2 12C2 15.7712 2 17.6569 3.17157 18.8284C4.34315 20 6.22876 20 10 20Z" fill="#007AFF"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.25 16C5.25 15.5858 5.58579 15.25 6 15.25H10C10.4142 15.25 10.75 15.5858 10.75 16C10.75 16.4142 10.4142 16.75 10 16.75H6C5.58579 16.75 5.25 16.4142 5.25 16Z" fill="white"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.75 16C11.75 15.5858 12.0858 15.25 12.5 15.25H14C14.4142 15.25 14.75 15.5858 14.75 16C14.75 16.4142 14.4142 16.75 14 16.75H12.5C12.0858 16.75 11.75 16.4142 11.75 16Z" fill="white"/>
+              <label class="rounded-card-heading blue-color"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M14 4H10C6.22876 4 4.34315 4 3.17157 5.17157C2.32803 6.01511 2.09185 7.22882 2.02572 9.25H21.9743C21.9082 7.22882 21.672 6.01511 20.8284 5.17157C19.6569 4 17.7712 4 14 4Z"
+                    fill="#007AFF" />
+                  <path
+                    d="M10 20H14C17.7712 20 19.6569 20 20.8284 18.8284C22 17.6569 22 15.7712 22 12C22 11.5581 22 11.142 21.9981 10.75H2.00189C2 11.142 2 11.5581 2 12C2 15.7712 2 17.6569 3.17157 18.8284C4.34315 20 6.22876 20 10 20Z"
+                    fill="#007AFF" />
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M5.25 16C5.25 15.5858 5.58579 15.25 6 15.25H10C10.4142 15.25 10.75 15.5858 10.75 16C10.75 16.4142 10.4142 16.75 10 16.75H6C5.58579 16.75 5.25 16.4142 5.25 16Z"
+                    fill="white" />
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M11.75 16C11.75 15.5858 12.0858 15.25 12.5 15.25H14C14.4142 15.25 14.75 15.5858 14.75 16C14.75 16.4142 14.4142 16.75 14 16.75H12.5C12.0858 16.75 11.75 16.4142 11.75 16Z"
+                    fill="white" />
                 </svg>
-                 &nbsp;Card</label>
+                &nbsp;Card</label>
               <ngx-stripe-card-number class="card-number" [options]="cardOptions"></ngx-stripe-card-number>
             </div>
 
             <div class="form-group  expy-cvvdetails">
-              <ngx-stripe-card-expiry  class="form-control" [options]="cardOptions"></ngx-stripe-card-expiry>
+              <ngx-stripe-card-expiry class="form-control" [options]="cardOptions"></ngx-stripe-card-expiry>
               <!-- </div>
             <div class="form-group pb-3"> -->
               <ngx-stripe-card-cvc class="form-control" [options]="cardOptions"></ngx-stripe-card-cvc>
             </div>
-              <input type="text" formControlName="email" placeholder="Name on card" class="form-control mt-2"
-                id="InputEmail" aria-describedby="emailHelp">
-     
+            <input type="text" formControlName="email" placeholder="Name on card" class="form-control mt-2"
+              id="InputEmail" aria-describedby="emailHelp">
+
             <button type="submit" (click)="pay()" class="btn-payment">
               Confirm Payment
             </button>

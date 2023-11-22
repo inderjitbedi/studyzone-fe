@@ -21,4 +21,9 @@ export const apiConstants = {
 
   addComment: 'user/course/:id/comment',
   deleteComment: 'user/course/:id/comment/:commentId',
+
+  applyPromo: 'user/course/:id/coupon/:promo/validate',
+
+  paymentIntent: 'user/paymentIntent',
+  saveTransaction: 'user/transaction/add',
 };

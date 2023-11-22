@@ -6,7 +6,11 @@ import { CommonAPIService } from 'src/app/providers/api.service';
 import { Constants } from 'src/app/providers/constant';
 import { ErrorHandlingService } from 'src/app/providers/error-handling.service';
 import { environment } from 'src/environments/environment';
-import { StripeService, StripeCardComponent } from 'ngx-stripe';
+import {
+  StripeService,
+  StripeCardComponent,
+  StripeCardNumberComponent,
+} from 'ngx-stripe';
 import {
   PaymentIntent,
   StripeCardElementOptions,
@@ -14,6 +18,7 @@ import {
 } from '@stripe/stripe-js';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, switchMap } from 'rxjs';
+import { LoaderService } from 'src/app/providers/loader.service';
 
 @Component({
   selector: 'app-payment',
@@ -21,7 +26,7 @@ import { Observable, switchMap } from 'rxjs';
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-  @ViewChild(StripeCardComponent) card!: StripeCardComponent;
+  @ViewChild(StripeCardNumberComponent) card!: StripeCardNumberComponent;
   cardOptions: StripeCardElementOptions = {
     style: {
       base: {
@@ -34,12 +39,14 @@ export class PaymentComponent implements OnInit {
     },
   };
 
+  promotionApplied: boolean = false;
+  addPromoCode: boolean = false;
   elementsOptions: StripeElementsOptions = {
     locale: 'es',
   };
 
   stripeTest!: FormGroup;
-
+  promoCodeForm!: FormGroup;
   baseUrl: any = environment.baseUrl;
   selectedCourseId: any;
   constructor(
@@ -49,7 +56,8 @@ export class PaymentComponent implements OnInit {
     public alertService: AlertService,
     private fb: FormBuilder,
     private errorHandlingService: ErrorHandlingService,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    private loaderService: LoaderService
   ) {
     this.activeRoute.params.subscribe({
       next: (route) => {
@@ -61,29 +69,81 @@ export class PaymentComponent implements OnInit {
 
   pay(): void {
     if (this.stripeTest.valid) {
-      this.createPaymentIntent(this.stripeTest.get('amount')?.value)
+      this.loaderService.show(true);
+      this.createPaymentIntent(
+        this.couponResponse?.finalPrice || this.courseDetails.price
+      )
         .pipe(
-          switchMap((pi: any) =>
-            this.stripeService.confirmCardPayment(pi.client_secret, {
+          switchMap((pi: any) => {
+            console.log('createPaymentIntent res', pi);
+
+            return this.stripeService.confirmCardPayment(pi.clientSecret, {
               payment_method: {
                 card: this.card.element,
                 billing_details: {
-                  name: this.stripeTest.get('name')?.value,
+                  email: this.stripeTest.get('email')?.value,
                 },
               },
-            })
-          )
+            });
+          })
         )
         .subscribe((result: any) => {
+          console.log(result);
+          let payload: any = {};
           if (result.error) {
             // Show error to your customer (e.g., insufficient funds)
             console.log(result.error.message);
+            payload = {
+              course: this.selectedCourseId,
+              coupon: this.couponResponse?.coupon || null,
+              stripePaymentId: result?.error?.payment_intent?.id || null,
+              stripePaymentMethodId: result?.error?.payment_method?.id || null,
+              amount: result?.error?.payment_intent?.amount / 100 || null,
+              // this.couponResponse?.finalPrice || this.courseDetails.price,
+              status: result?.error?.code || null,
+              email: this.stripeTest.get('email')?.value,
+            };
+            this.errorHandlingService.handle(result.error);
+            console.log('errorr = ', payload);
           } else {
             // The payment has been processed!
             if (result.paymentIntent.status === 'succeeded') {
-              // Show a success message to your customer
+              payload = {
+                course: this.selectedCourseId,
+                coupon: this.couponResponse?.coupon || null,
+                stripePaymentId: result?.paymentIntent?.id || null,
+                stripePaymentMethodId:
+                  result?.paymentIntent?.payment_method || null,
+                amount: result?.paymentIntent?.amount / 100 || null,
+                // this.couponResponse?.finalPrice || this.courseDetails.price,
+                status: result?.paymentIntent?.status || null,
+                email: this.stripeTest.get('email')?.value,
+              };
+              console.log('success = ', payload);
+              this.alertService.notify('Payment done successfully');
             }
           }
+
+          this.apiService
+            .post(apiConstants.saveTransaction, payload)
+            .subscribe({
+              next: (data) => {
+                this.apiCallActive = false;
+                if (payload.status === 'succeeded')
+                  this.router.navigate([
+                    '/dashboard/courses/course',
+                    this.selectedCourseId,
+                    'details',
+                  ]);
+              },
+              error: (e) => {
+                this.apiCallActive = false;
+                this.errorHandlingService.handle(e);
+              },
+              complete: () => {
+                this.loaderService.show(false);
+              },
+            });
         });
     } else {
       console.log(this.stripeTest);
@@ -91,9 +151,12 @@ export class PaymentComponent implements OnInit {
   }
 
   createPaymentIntent(amount: number): Observable<any> {
-    return this.apiService.post(`/create-payment-intent`, { amount });
+    return this.apiService.post(apiConstants.paymentIntent, { amount });
   }
   ngOnInit(): void {
+    this.promoCodeForm = this.fb.group({
+      code: ['', [Validators.required]],
+    });
     this.stripeTest = this.fb.group({
       email: ['', [Validators.required]],
     });
@@ -111,13 +174,6 @@ export class PaymentComponent implements OnInit {
         next: (data) => {
           this.apiCallActive = false;
           this.courseDetails = data.course;
-          // this.rootComments = this.courseDetails.rootComments;
-          // if (data.statusCode === 200) {
-          // this.dataSource = new MatTableDataSource<any>(data.response?.courses || []);
-          // this.selectedCourseCategoryDoc = data.response?.category || {};
-          // } else {
-          //   this.errorHandlingService.handle(data);
-          // }
         },
         error: (e) => {
           this.apiCallActive = false;
@@ -125,7 +181,37 @@ export class PaymentComponent implements OnInit {
         },
       });
   }
-
+  removeCoupon() {
+    this.promotionApplied = false;
+    this.addPromoCode = false;
+    this.couponResponse = {};
+    this.promoCodeForm.reset();
+  }
+  couponResponse: any = {};
+  applyPromo() {
+    this.apiCallActive = true;
+    this.apiService
+      .get(
+        apiConstants.applyPromo
+          .replace(':id', this.selectedCourseId)
+          .replace(':promo', this.promoCodeForm.value.code)
+      )
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.couponResponse = data;
+          this.apiCallActive = false;
+          this.promotionApplied = true;
+          // this.promoCodeForm.reset();
+          // this.alertService.notify(data.message);
+          // this.getCourseDetails();
+        },
+        error: (e) => {
+          this.apiCallActive = false;
+          this.errorHandlingService.handle(e);
+        },
+      });
+  }
   requestEnrollment() {
     if (this.courseDetails.enrollemtStatus != 'pending') {
       this.apiCallActive = true;

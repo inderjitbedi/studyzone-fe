@@ -33,14 +33,20 @@
                             <span class="badge badge-pill badge-danger" *ngIf="courseDetails.type =='paid'">Paid</span>
                             <span class="badge badge-pill badge-light"
                                 *ngIf="courseDetails.type =='private'">Private</span>
+                            <span class="card-title h4"
+                                *ngIf="courseDetails.type =='paid'">CA${{courseDetails.price||0}}</span>
                         </div>
                         <p>{{courseDetails.description || 'No description added'}}</p>
 
-
                         <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid' &&  
+                        courseDetails.enrollmentStatus == 'not_enrolled'" (click)="gotoPayment()">
+                            Buy now
+                        </button>
+
+                        <!-- <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid' &&  
                             courseDetails.enrollmentStatus == 'not_enrolled'" (click)="requestEnrollment()">
                             Enroll Me
-                        </button>
+                        </button> -->
 
                         <button class="btn enroll-btn" *ngIf="!courseDetails.hasAlreadyStarted &&  
                         (courseDetails.type =='public' )" (click)="enrollCourse()">Start Course</button>

@@ -35,6 +35,13 @@ export class CourseDetailComponent implements OnInit {
   back() {
     this.router.navigate(['/dashboard/courses/all-courses']);
   }
+  gotoPayment() {
+    this.router.navigate([
+      '/dashboard/courses/course',
+      this.selectedCourseId,
+      'payment',
+    ]);
+  }
   apiCallActive: boolean = false;
   courseDetails: any;
   getCourseDetails() {
