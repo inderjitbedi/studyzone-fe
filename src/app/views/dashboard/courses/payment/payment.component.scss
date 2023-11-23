@@ -1,12 +1,13 @@
-.blue-color{
+.blue-color {
     color: hsl(211, 100%, 50%);
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
-    line-height: 18px; 
+    line-height: 18px;
 }
-.rounded-card-heading{
-    margin:16px 0;
+
+.rounded-card-heading {
+    margin: 16px 0;
     text-align: center;
     display: block;
     border-radius: 16px;
@@ -17,46 +18,136 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
-.card-number{
+.card-number {
     width: 373px;
-   display: block;
-    margin:0;
-    border-radius: 12px;
+    display: block;
+    margin: 0;
+    border-radius: 12px 12px 0 0;
     padding: 16px;
-    border-width: 0 0 1px 0 ;
+    border-width: 0 0 1px 0;
     border-color: #E7E7E7;
-   background-color: #FAFAFA;
-   .form-control{
-    padding: 0;
-   }
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #E7E7E7;
+
+    .form-control {
+        padding: 0;
+    }
 }
-.expy-cvvdetails{
+
+.expy-cvvdetails {
     display: flex;
     flex-direction: row;
     width: 373px;
-    margin:0;
+    margin: 0;
     border-radius: 12px;
     background-color: #FAFAFA;
-    .form-control{
-        border:0;
+
+    .form-control {
+        border: 0;
         border-radius: 0;
         padding: 16px;
         background-color: #FAFAFA;
     }
 }
-#InputEmail{
+
+#InputEmail {
     border-radius: 16px;
     border: 1px solid #D1D1D1;
-    margin-bottom:16px;
+    // margin-bottom: 16px;
 }
-.divider-vr{
+
+.divider-vr {
     width: 1px;
     display: block;
-    margin:auto;
+    margin: auto;
     height: 100%;
     background-color: #E7E7E7;
 }
-.btn-payment{
+
+.btn-payment {
     width: fit-content;
     line-height: 16px;
+}
+
+.expy-cvvdetails .form-control:first-child {
+    border-radius: 0 0 0 12px;
+    border-right: 1px solid #E7E7E7;
+}
+
+.expy-cvvdetails .form-control:last-child {
+    border-radius: 0 0 12px 0;
+}
+
+.bgimg {
+    position: relative;
+    width: 373px;
+}
+
+.bgimg img {
+    position: absolute;
+    top: -11px;
+    z-index: 9999;
+    width: 160px;
+    height: auto;
+    right: -13px;
+}
+
+.expy-cvvdetails {
+    position: relative;
+}
+
+.expy-cvvdetails img {
+    position: absolute;
+    top: 1px;
+    z-index: 9999;
+    width: 50px;
+    height: auto;
+    right: 14px;
+}
+
+.disclaimer {
+    width: 373px;
+    font-family: Plus Jakarta Sans;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #B1B1B1;
+
+}
+
+main span {
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.applybtn.badge-promo {
+    width: 93px;
+    text-align: center !important;
+    height: 56px;
+    line-height: 39px !important;
+    font-weight: 600 !important;
+    border-radius: 16px;
+    margin-top: 8px;
+}
+
+.badge-promo {
+    height: 40px;
+
+    .promo {
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 0em;
+        text-align: center;
+        padding-left: 5px;
+    }
+
 }

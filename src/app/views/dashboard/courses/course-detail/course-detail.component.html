@@ -38,10 +38,7 @@
                         </div>
                         <p>{{courseDetails.description || 'No description added'}}</p>
 
-                        <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid' &&  
-                        courseDetails.enrollmentStatus == 'not_enrolled'" (click)="gotoPayment()">
-                            Buy now
-                        </button>
+
 
                         <!-- <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid' &&  
                             courseDetails.enrollmentStatus == 'not_enrolled'" (click)="requestEnrollment()">
@@ -49,7 +46,15 @@
                         </button> -->
 
                         <button class="btn enroll-btn" *ngIf="!courseDetails.hasAlreadyStarted &&  
-                        (courseDetails.type =='public' )" (click)="enrollCourse()">Start Course</button>
+                        (courseDetails.type =='public'
+                        || courseDetails.type =='private' 
+                            || (courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'payment_received' ))"
+                            (click)="enrollCourse()">Start Course</button>
+
+                        <button class="btn enroll-btn" *ngIf="courseDetails.hasAlreadyStarted &&  
+                        (courseDetails.type =='public'  || courseDetails.type =='private' 
+                            || (courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'payment_received'))"
+                            (click)="resumeCourse()">Resume</button>
 
                         <i class="badge-danger"
                             *ngIf="courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'pending'">Requested.</i>
@@ -58,9 +63,14 @@
                             *ngIf="courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'declined'">Sorry,
                             unfortunately your enollment request have been declined by the Administrator.</i>
 
+
+
+
                         <button class="btn enroll-btn"
-                            *ngIf="courseDetails.hasAlreadyStarted || courseDetails.type =='private' || (courseDetails.type =='paid' && courseDetails.enrollmentStatus == 'accepted')"
-                            (click)="resumeCourse()">Resume</button>
+                            *ngIf="courseDetails.type =='paid' &&  courseDetails.enrollmentStatus == 'not_enrolled'"
+                            (click)="gotoPayment()">
+                            Buy now
+                        </button>
                     </div>
 
                 </div>

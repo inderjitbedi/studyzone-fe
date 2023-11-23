@@ -30,8 +30,8 @@
             </span>
             <p></p>
             <div class="d-flex">
-              <div style="width: 85%;">{{courseDetails.name | titlecase}}</div>
-              <div style="width: 15%;">CA${{courseDetails.price}}</div>
+              <div style="width: 85%;"><span><b>{{courseDetails.name | titlecase}}</b></span></div>
+              <div style="width: 15%;"><span>CA${{courseDetails.price}}</span></div>
 
               <!-- <span class="badge badge-pill badge-success" *ngIf="courseDetails.type =='public'">Free</span>
               <span class="badge badge-pill badge-danger" *ngIf="courseDetails.type =='paid'">Paid</span>
@@ -50,61 +50,50 @@
                     d="M7.1943 2.4002C7.01166 2.55585 6.92033 2.63368 6.8228 2.69905C6.59922 2.84891 6.34813 2.95291 6.08407 3.00504C5.96888 3.02778 5.84928 3.03733 5.61006 3.05642C5.00902 3.10438 4.7085 3.12836 4.45778 3.21692C3.87788 3.42175 3.42175 3.87788 3.21692 4.45778C3.12836 4.7085 3.10438 5.00902 3.05642 5.61006C3.03733 5.84928 3.02778 5.96888 3.00504 6.08407C2.95291 6.34813 2.84891 6.59922 2.69905 6.8228C2.63368 6.92033 2.55586 7.01165 2.4002 7.1943C2.00913 7.65321 1.81358 7.88267 1.69891 8.12258C1.4337 8.67746 1.4337 9.32254 1.69891 9.87742C1.81358 10.1173 2.00912 10.3468 2.4002 10.8057C2.55584 10.9883 2.63369 11.0797 2.69905 11.1772C2.84891 11.4008 2.95291 11.6519 3.00504 11.9159C3.02778 12.0311 3.03733 12.1507 3.05642 12.3899C3.10438 12.991 3.12836 13.2915 3.21692 13.5422C3.42175 14.1221 3.87788 14.5783 4.45778 14.7831C4.7085 14.8716 5.00902 14.8956 5.61006 14.9436C5.84928 14.9627 5.96888 14.9722 6.08407 14.995C6.34813 15.0471 6.59922 15.1511 6.8228 15.3009C6.92033 15.3663 7.01165 15.4441 7.1943 15.5998C7.65322 15.9909 7.88267 16.1864 8.12258 16.3011C8.67746 16.5663 9.32254 16.5663 9.87742 16.3011C10.1173 16.1864 10.3468 15.9909 10.8057 15.5998C10.9883 15.4441 11.0797 15.3663 11.1772 15.3009C11.4008 15.1511 11.6519 15.0471 11.9159 14.995C12.0311 14.9722 12.1507 14.9627 12.3899 14.9436C12.991 14.8956 13.2915 14.8716 13.5422 14.7831C14.1221 14.5783 14.5783 14.1221 14.7831 13.5422C14.8716 13.2915 14.8956 12.991 14.9436 12.3899C14.9627 12.1507 14.9722 12.0311 14.995 11.9159C15.0471 11.6519 15.1511 11.4008 15.3009 11.1772C15.3663 11.0797 15.4441 10.9883 15.5998 10.8057C15.9909 10.3468 16.1864 10.1173 16.3011 9.87742C16.5663 9.32254 16.5663 8.67746 16.3011 8.12258C16.1864 7.88267 15.9909 7.65322 15.5998 7.1943C15.4441 7.01165 15.3663 6.92033 15.3009 6.8228C15.1511 6.59922 15.0471 6.34813 14.995 6.08407C14.9722 5.96888 14.9627 5.84928 14.9436 5.61006C14.8956 5.00902 14.8716 4.7085 14.7831 4.45778C14.5783 3.87788 14.1221 3.42175 13.5422 3.21692C13.2915 3.12836 12.991 3.10438 12.3899 3.05642C12.1507 3.03733 12.0311 3.02778 11.9159 3.00504C11.6519 2.95291 11.4008 2.84891 11.1772 2.69905C11.0797 2.63368 10.9883 2.55586 10.8057 2.4002C10.3468 2.00912 10.1173 1.81358 9.87742 1.69891C9.32254 1.4337 8.67746 1.4337 8.12258 1.69891C7.88267 1.81358 7.65321 2.00912 7.1943 2.4002ZM11.8732 6.12719C12.1116 6.36557 12.1116 6.75205 11.8732 6.99042L6.99002 11.8736C6.75165 12.112 6.36517 12.112 6.1268 11.8736C5.88842 11.6352 5.88842 11.2487 6.1268 11.0104L11.01 6.12719C11.2483 5.88882 11.6348 5.88882 11.8732 6.12719ZM11.8485 11.035C11.8485 11.4845 11.4841 11.8489 11.0346 11.8489C10.5852 11.8489 10.2208 11.4845 10.2208 11.035C10.2208 10.5856 10.5852 10.2212 11.0346 10.2212C11.4841 10.2212 11.8485 10.5856 11.8485 11.035ZM6.96534 7.7796C7.41482 7.7796 7.7792 7.41522 7.7792 6.96574C7.7792 6.51625 7.41482 6.15188 6.96534 6.15188C6.51586 6.15188 6.15148 6.51625 6.15148 6.96574C6.15148 7.41522 6.51586 7.7796 6.96534 7.7796Z"
                     fill="#0072DB" />
                 </svg>
-                Add promotion code</span>
+                <span class="promo">Add promotion code</span></span>
             </div>
-            <div [formGroup]="promoCodeForm" *ngIf="!promotionApplied && addPromoCode">
+            <div [formGroup]="promoCodeForm" *ngIf="!promotionApplied && addPromoCode" class="d-flex gap-2">
 
               <input type="text" formControlName="code" placeholder="Enter the promo code" class="form-control mt-2"
                 id="InputEmail" aria-describedby="emailHelp">
               <!-- </div> -->
-              <span class="badge h-34 badge-pill badge-promo cursor-pointer" (click)="applyPromo()">Apply</span>
+              <span class="badge h-34 badge-pill badge-promo  applybtn btn" [class.not-allowed]="promoCodeForm.invalid"
+                (click)="applyPromo()">Apply</span>
 
             </div>
-            <div class="d-flex mt-10" *ngIf="promotionApplied">
+            <div class="d-flex mt-10 flex-wrap" *ngIf="promotionApplied">
               <!-- <div class="form-group pb-3"> -->
               <div style="width: 85%;"><span>Discount</span></div>
               <div style="width: 15%; color:#007AFF">- CA${{couponResponse?.couponValue}}</div>
-              <span class="badge h-34 badge-pill badge-promo cursor-pointer" (click)="removeCoupon()">Remove</span>
-
+              <div style="width: 100%;text-align: right;">
+                <span class="badge h-34 badge-pill badge-promo cursor-pointer"
+                  style="background-color:transparent;color:#E61F57;line-height: 32px; font-size: 12px;padding:0 22px 0; font-weight:700;"
+                  (click)="removeCoupon()">Remove</span>
+              </div>
             </div>
             <hr>
             <div class="d-flex">
-              <div style="width: 85%;"><span>Total Amount</span></div>
-              <div style="width: 15%;">CA${{couponResponse?.finalPrice || courseDetails.price}}</div>
+              <div style="width: 85%;"><span><b>Total Amount</b></span></div>
+              <div style="width: 15%;"><b>CA${{couponResponse?.finalPrice == undefined ||couponResponse?.finalPrice ==
+                  null? courseDetails.price:couponResponse?.finalPrice}}</b></div>
             </div>
-            <!-- <p>{{courseDetails.description || 'No description added'}}</p> -->
-
-
-            <!-- <button class="btn enroll-btn" *ngIf="courseDetails.type =='paid' &&  
-                          courseDetails.enrollmentStatus == 'not_enrolled'" (click)="requestEnrollment()">
-              Enroll Me
-            </button> -->
-
-            <!-- <button class="btn enroll-btn" *ngIf="!courseDetails.hasAlreadyStarted &&  
-                      (courseDetails.type =='public' )" (click)="enrollCourse()">Start Course</button>  -->
-
-
           </div>
 
         </div>
         <div class="col-1"><span class="divider-vr"></span></div>
         <div class="col-5">
-          <ngx-stripe-card-group [formGroup]="stripeTest" [elementsOptions]="elementsOptions">
+          <ngx-stripe-card-group *ngIf="couponResponse && couponResponse?.finalPrice !== 0 " [formGroup]="stripeForm"
+            #ngForm="ngForm" [elementsOptions]="elementsOptions">
 
             <div class="form-group pb-3">
               <label for="InputEmail">Contact Information</label>
               <input type="email" formControlName="email" placeholder="Enter your email" class="form-control mt-2"
                 id="InputEmail" aria-describedby="emailHelp">
-              <!-- <span class="error"
-                          *ngIf="matcher.isErrorState(loginForm.controls['email'], ngForm) && loginForm.controls['email'].hasError('required')">Required</span>
-                      <span class="error" *ngIf="loginForm.controls['email'].hasError('pattern')">Invalid
-                          email</span> -->
+              <span class="error"
+                *ngIf="matcher.isErrorState(stripeForm.controls['email'], ngForm) && stripeForm.controls['email'].hasError('required')">Required</span>
+              <span class="error" *ngIf="stripeForm.controls['email'].hasError('pattern')">Invalid
+                email</span>
             </div>
-            <!-- <div class="form-group pb-3">
-              <label for="InputPassword">Amount</label>
-              <input type="text" formControlName="amount" placeholder="Enter Amount" class="form-control mt-2"
-                id="InputPassword">
-            </div> -->
             <div class="form-group">
               <label for="InputEmail">Payment Method</label><br />
               <label class="rounded-card-heading blue-color"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -123,22 +112,50 @@
                     fill="white" />
                 </svg>
                 &nbsp;Card</label>
-              <ngx-stripe-card-number class="card-number" [options]="cardOptions"></ngx-stripe-card-number>
+              <div class="bgimg">
+                <img src="assets/svg/visacard.png" alt="visacard image">
+                <ngx-stripe-card-number class="card-number" [options]="cardOptions"></ngx-stripe-card-number>
+              </div>
             </div>
 
             <div class="form-group  expy-cvvdetails">
+              <img src="assets/svg/cvv.png" alt="ccv-image">
               <ngx-stripe-card-expiry class="form-control" [options]="cardOptions"></ngx-stripe-card-expiry>
               <!-- </div>
             <div class="form-group pb-3"> -->
               <ngx-stripe-card-cvc class="form-control" [options]="cardOptions"></ngx-stripe-card-cvc>
             </div>
-            <input type="text" formControlName="email" placeholder="Name on card" class="form-control mt-2"
-              id="InputEmail" aria-describedby="emailHelp">
-
-            <button type="submit" (click)="pay()" class="btn-payment">
+            <div class="form-group pb-3">
+              <input type="text" formControlName="name" placeholder="Name on card" class="form-control mt-2"
+                id="InputEmail" aria-describedby="emailHelp">
+              <span class="error"
+                *ngIf="matcher.isErrorState(stripeForm.controls['name'], ngForm) && stripeForm.controls['name'].hasError('required')">Required</span>
+            </div>
+            <button type="submit" (click)="pay()" class="btn-payment"
+              [class.not-allowed]="stripeForm.invalid || apiCallActive">
               Confirm Payment
             </button>
+
+            <p class="disclaimer">By confirming, you allow Study Zone to charge your card for this payment and agree
+              with out terms and conditions.</p>
           </ngx-stripe-card-group>
+
+          <form [formGroup]="skipPaymentForm" #ngForm1="ngForm" *ngIf="couponResponse?.finalPrice === 0">
+
+            <div class="form-group pb-3">
+              <label for="InputEmail">Contact Information</label>
+              <input type="email" formControlName="email" placeholder="Enter your email" class="form-control mt-2"
+                id="InputEmail" aria-describedby="emailHelp">
+              <span class="error"
+                *ngIf="matcher.isErrorState(skipPaymentForm.controls['email'], ngForm1) && skipPaymentForm.controls['email'].hasError('required')">Required</span>
+              <span class="error" *ngIf="skipPaymentForm.controls['email'].hasError('pattern')">Invalid
+                email</span>
+            </div>
+            <button type="submit" (click)="skipPayment()" class="btn-payment"
+              [class.not-allowed]="skipPaymentForm.invalid || apiCallActive">
+              Skip Payment
+            </button>
+          </form>
         </div>
       </div>
     </section>
