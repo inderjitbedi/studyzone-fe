@@ -208,7 +208,11 @@ export class PaymentComponent implements OnInit {
                 nameOnCard: this.stripeForm.get('name')?.value,
               };
               console.log('success = ', payload);
-              this.alertService.notify('Payment done successfully');
+              this.alertService.notify(
+                'Your payment has been processed successfully.',
+                'success',
+                5000
+              );
             }
           }
 
